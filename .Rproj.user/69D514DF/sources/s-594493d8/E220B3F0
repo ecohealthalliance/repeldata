@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583868362710.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "E220B3F0",
+    "lastKnownWriteTime" : 1583868366,
+    "last_content_update" : 1583868366036,
+    "path" : "~/projects/repel-all/wahisclient/R/wahisclient-package.R",
+    "project_path" : "R/wahisclient-package.R",
+    "properties" : {
+        "cursorPosition" : "6,20",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 23,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

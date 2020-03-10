@@ -1,0 +1,9 @@
+FROM rocker/tidyverse:latest
+
+## Install packages
+
+RUN install2.r -s remotes
+COPY DESCRIPTION /pkg/DESCRIPTION
+RUN Rscript -e "remotes::install_deps(pkgdir = '/pkg/', dependencies=TRUE, upgrade = 'always', force = FALSE, quiet = FALSE)"
+
+

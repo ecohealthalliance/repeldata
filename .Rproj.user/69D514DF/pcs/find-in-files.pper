@@ -1,0 +1,13 @@
+{
+    "dialog-state" : {
+        "caseSensitive" : false,
+        "filePatterns" : [
+            "*.r",
+            "*.R"
+        ],
+        "path" : "",
+        "projectRelative" : true,
+        "query" : "rvest",
+        "regex" : false
+    }
+}

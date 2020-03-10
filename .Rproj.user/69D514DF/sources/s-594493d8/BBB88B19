@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583868655211.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "BBB88B19",
+    "lastKnownWriteTime" : 1583868752,
+    "last_content_update" : 1583868752412,
+    "path" : "~/projects/repel-all/wahisclient/README.md",
+    "project_path" : "README.md",
+    "properties" : {
+        "cursorPosition" : "3,38",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 25,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "markdown"
+}

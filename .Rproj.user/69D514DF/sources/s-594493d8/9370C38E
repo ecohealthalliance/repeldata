@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583867907199.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9370C38E",
+    "lastKnownWriteTime" : 1583868129,
+    "last_content_update" : 1583868129996,
+    "path" : "~/projects/repel-all/wahisclient/Dockerfile",
+    "project_path" : "Dockerfile",
+    "properties" : {
+        "cursorPosition" : "2,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 19,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "text"
+}

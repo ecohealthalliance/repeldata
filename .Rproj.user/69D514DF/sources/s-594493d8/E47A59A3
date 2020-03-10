@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1581004545967.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "E47A59A3",
+    "lastKnownWriteTime" : 139771120713728,
+    "last_content_update" : 1581004545967,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "924FB14D",
+        "caption" : "annual_reports_animal_hosts",
+        "contentUrl" : "grid_resource/gridviewer.html?env=_rs_no_env&obj=&cache_key=924FB14D",
+        "displayedObservations" : "1000",
+        "environment" : "_rs_no_env",
+        "expression" : "",
+        "object" : "",
+        "preview" : "1",
+        "totalObservations" : "1000",
+        "variables" : "20"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

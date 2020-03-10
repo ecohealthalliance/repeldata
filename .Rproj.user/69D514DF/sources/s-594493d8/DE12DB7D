@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583867387679.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "DE12DB7D",
+    "lastKnownWriteTime" : 1583868160,
+    "last_content_update" : 1583868160392,
+    "path" : "~/projects/repel-all/wahisclient/R/download.R",
+    "project_path" : "R/download.R",
+    "properties" : {
+        "cursorPosition" : "53,11",
+        "scrollLine" : "36"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 15,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

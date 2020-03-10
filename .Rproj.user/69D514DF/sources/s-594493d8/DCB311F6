@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1580240975847.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "DCB311F6",
+    "lastKnownWriteTime" : 94052924492560,
+    "last_content_update" : 1580240975847,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "AB0F95AA",
+        "caption" : "annual_reports_animal_diseases",
+        "contentUrl" : "grid_resource/gridviewer.html?env=_rs_no_env&obj=&cache_key=AB0F95AA",
+        "displayedObservations" : "1000",
+        "environment" : "_rs_no_env",
+        "expression" : "",
+        "object" : "",
+        "preview" : "1",
+        "totalObservations" : "1000",
+        "variables" : "17"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
