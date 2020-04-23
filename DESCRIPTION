@@ -17,6 +17,7 @@ Language: en-US
 Imports:
     DBI,
     MonetDBLite,
+    RPostgres,
     rappdirs,
     rstudioapi,
     arkdb,
