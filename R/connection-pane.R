@@ -27,23 +27,25 @@ sql_action <- function() {
 #'
 #' @examples
 #' if (!is.null(getOption("connectionObserver"))) wahis_pane()
-wahis_pane <- function() {
+wahis_pane <- function(conn = wahis_db(), dbname = "REPEL local database",
+                       connectCode = "wahisclient::wahis_pane()",
+                       disconnect = wahisclient::wahis_disconnect) {
     observer <- getOption("connectionObserver")
     if (!is.null(observer)) {
         observer$connectionOpened(
             type = "wahisclient",
             host = "wahisclient",
-            displayName = "WAHIS Datapase Tables",
+            displayName = dbname,
             icon = system.file("img", "eha_logo.png", package = "wahisclient"),
-            connectCode = "wahisclient::wahis_pane()",
-            disconnect = wahisclient::wahis_disconnect,
+            connectCode = connectCode,
+            disconnect = disconnect,
             listObjectTypes = function() {
                 list(
                     table = list(contains = "data")
                 )
             },
             listObjects = function(type = "datasets") {
-                tbls <- DBI::dbListTables(wahis_db())
+                tbls <- DBI::dbListTables(conn)
                 data.frame(
                     name = tbls,
                     type = rep("table", length(tbls)),
@@ -51,7 +53,7 @@ wahis_pane <- function() {
                 )
             },
             listColumns = function(table) {
-                res <- DBI::dbSendQuery(wahis_db(),
+                res <- DBI::dbSendQuery(conn,
                                         paste("SELECT * FROM", table, "LIMIT 1"))
                 on.exit(DBI::dbClearResult(res))
                 data.frame(
@@ -60,7 +62,7 @@ wahis_pane <- function() {
                 )
             },
             previewObject = function(rowLimit, table) {  #nolint
-                DBI::dbGetQuery(wahis_db(),
+                DBI::dbGetQuery(conn,
                                 paste("SELECT * FROM", table, "LIMIT", rowLimit))
             },
             actions = list(
@@ -73,7 +75,7 @@ wahis_pane <- function() {
                     callback = sql_action
                 )
             ),
-            connectionObject = wahis_db()
+            connectionObject = conn
         )
     }
 }

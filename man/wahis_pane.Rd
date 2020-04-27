@@ -4,7 +4,12 @@
 \alias{wahis_pane}
 \title{Open WAHIS database connection pane in RStudio}
 \usage{
-wahis_pane()
+wahis_pane(
+  conn = wahis_db(),
+  dbname = "REPEL local database",
+  connectCode = "wahisclient::wahis_pane()",
+  disconnect = wahisclient::wahis_disconnect
+)
 }
 \description{
 This function launches the RStudio "Connection" pane to interactively
