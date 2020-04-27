@@ -28,17 +28,16 @@ wahis_db_download <- function(destdir = tempfile(),
                               cleanup = TRUE, verbose = interactive(),
                               load_aws_credentials = TRUE) {
     if(load_aws_credentials && requireNamespace("aws.signature", quietly = TRUE)) {
-        aws.signature::use_credentials()
+        aws.signature::use_credentials()  
     }
     if (verbose) message("Downloading data...\n")
     purrr::walk(DBI::dbListTables(wahis_db()), ~DBI::dbRemoveTable(wahis_db(), .))
     fs::dir_create(destdir)
-    data_files_df <- get_bucket_df("wahis-data", prefix = "data-processed/db")
+    data_files_df <- get_bucket_df("repeldb", prefix = "csv")
     purrr::walk(data_files_df$Key, function(key) {
         f = fs::path(destdir, basename(key))
-        save_object(key, "wahis-data", file = f)
-        arkdb::unark(f, wahis_db(), lines = 100000,
-                     try_native = TRUE, overwrite = TRUE)
+        save_object(object = key, bucket = "repeldb", file = f)
+        arkdb::unark(f, wahis_db(), lines = 100000, overwrite = TRUE)
         if (cleanup) file.remove(f)
     })
     if (verbose) message("Calculating Stats...\n")

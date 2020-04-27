@@ -1,9 +1,9 @@
-.onAttach <- function(libname, pkgname) {
-    MonetDBLite::monetdblite_shutdown()
-    if (interactive() && Sys.getenv("RSTUDIO") == "1") {
-        wahis_pane()
-    }
-}
+# .onAttach <- function(libname, pkgname) {
+#     MonetDBLite::monetdblite_shutdown()
+#     if (interactive() && Sys.getenv("RSTUDIO") == "1") {
+#         wahis_pane()
+#     }
+# }
 
 #' Remove the local WAHIS database
 #'
