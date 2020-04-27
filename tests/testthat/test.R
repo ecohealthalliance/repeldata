@@ -1,7 +1,7 @@
 
-context("wahisclient")
+context("repeldata")
 
-test_that("wahisclient works", {
+test_that("repeldata works", {
 
   expect_true(TRUE)
 

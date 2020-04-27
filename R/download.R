@@ -21,29 +21,30 @@
 #' @examples
 #' \donttest{
 #' \dontrun{
-#' wahis_db_download()
+#' repel_local_download()
 #' }
 #' }
-wahis_db_download <- function(destdir = tempfile(),
+#TODO get AWS LastModified
+repel_local_download <- function(destdir = tempfile(),
                               cleanup = TRUE, verbose = interactive(),
                               load_aws_credentials = TRUE) {
     if(load_aws_credentials && requireNamespace("aws.signature", quietly = TRUE)) {
         aws.signature::use_credentials()  
     }
     if (verbose) message("Downloading data...\n")
-    purrr::walk(DBI::dbListTables(wahis_db()), ~DBI::dbRemoveTable(wahis_db(), .))
+    purrr::walk(DBI::dbListTables(repel_local_conn()), ~DBI::dbRemoveTable(repel_local_conn(), .))
     fs::dir_create(destdir)
     data_files_df <- get_bucket_df("repeldb", prefix = "csv")
     purrr::walk(data_files_df$Key, function(key) {
         f = fs::path(destdir, basename(key))
         save_object(object = key, bucket = "repeldb", file = f)
-        arkdb::unark(f, wahis_db(), lines = 100000, overwrite = TRUE)
+        arkdb::unark(f, repel_local_conn(), lines = 100000, overwrite = TRUE)
         if (cleanup) file.remove(f)
     })
     if (verbose) message("Calculating Stats...\n")
-    DBI::dbWriteTable(wahis_db(), "wahis_status", make_status_table(),
+    DBI::dbWriteTable(repel_local_conn(), "repel_local_status", make_status_table(),
                  overwrite = TRUE)
-    update_wahis_pane()
+    update_local_repel_pane()
     if (verbose) message("Done!")
 }
 
@@ -52,18 +53,18 @@ wahis_db_download <- function(destdir = tempfile(),
 #' @importFrom purrr map_dbl
 #' @importFrom tibble tibble
 make_status_table <- function() {
-    sz <- sum(file.info(list.files(wahis_path(),
+    sz <- sum(file.info(list.files(repel_local_path(),
                                    all.files = TRUE,
                                    recursive = TRUE,
                                    full.names = TRUE))$size)
     class(sz) <- "object_size"
-    tables <- DBI::dbListTables(wahis_db())
-    records = sum(map_dbl(tables, ~DBI::dbGetQuery(wahis_db(), paste0("SELECT COUNT(*) FROM ", ., ";"))[[1]]))
+    tables <- DBI::dbListTables(repel_local_conn())
+    records = sum(map_dbl(tables, ~DBI::dbGetQuery(repel_local_conn(), paste0("SELECT COUNT(*) FROM ", ., ";"))[[1]]))
     tibble(
         time_imported = Sys.time(),
         number_of_tables = length(tables),
         number_of_records = formatC(records, format = "d", big.mark = ","),
         size_on_disk = format(sz, "auto"),
-        location_on_disk = wahis_path()
+        location_on_disk = repel_local_path()
     )
 }

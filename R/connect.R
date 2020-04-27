@@ -1,16 +1,11 @@
 #' @importFrom rappdirs user_data_dir
-wahis_path <- function() {
-    sys_wahis_path <- Sys.getenv("WAHIS_DB_DIR")
-    if (sys_wahis_path == "") {
-        return(rappdirs::user_data_dir("wahisclient"))
-    } else {
-        return(sys_wahis_path)
-    }
+repel_local_path <- function() {
+    Sys.getenv("REPEL_DB_DIR", unset = rappdirs::user_data_dir("repeldata"))
 }
 
-wahis_check_status <- function() {
-    if (!wahis_status(FALSE)) {
-        stop("Local WAHIS database empty or corrupt. Download with wahis_db_download()") # nolint
+repel_local_check_status <- function() {
+    if (!repel_local_status(FALSE)) {
+        stop("Local REPEL database empty or corrupt. Download with repel_local_download()") # nolint
     }
 }
 
@@ -29,8 +24,8 @@ wahis_check_status <- function() {
 #' @importFrom DBI dbIsValid dbConnect
 #' @importFrom MonetDBLite MonetDBLite
 #' @export
-wahis_db <- function(dbdir = wahis_path()) {
-    db <- mget("wahis_db", envir = wahis_cache, ifnotfound = NA)[[1]]
+repel_local_conn <- function(dbdir = repel_local_path()) {
+    db <- mget("repel_local_conn", envir = repel_cache, ifnotfound = NA)[[1]]
     if (inherits(db, "DBIConnection")) {
         if (DBI::dbIsValid(db)) {
             return(db)
@@ -48,7 +43,7 @@ wahis_db <- function(dbdir = wahis_path()) {
             if (grepl("(Database lock|bad rolemask)", e)) {
                 stop(paste(
                     "Local WAHIS database is locked by another R session.\n",
-                    "Try closing or running wahis_disconnect() in that session."
+                    "Try closing or running repel_local_disconnect() in that session."
                 ),
                 call. = FALSE
                 )
@@ -59,7 +54,7 @@ wahis_db <- function(dbdir = wahis_path()) {
         finally = NULL
     )
     
-    assign("wahis_db", db, envir = wahis_cache)
+    assign("repel_local_conn", db, envir = repel_cache)
     db
 }
 
@@ -68,23 +63,32 @@ wahis_db <- function(dbdir = wahis_path()) {
 #' A utility function for disconnecting from the database.
 #'
 #' @examples
-#' wahis_disconnect()
+#' repel_local_disconnect()
 #' @export
 #'
-wahis_disconnect <- function() {
-    wahis_disconnect_()
+repel_local_disconnect <- function() {
+    repel_local_disconnect_()
 }
-wahis_disconnect_ <- function(environment = wahis_cache) { # nolint
-    db <- mget("wahis_db", envir = wahis_cache, ifnotfound = NA)[[1]]
+repel_local_disconnect_ <- function(environment = repel_cache) { # nolint
+    db <- mget("repel_local_conn", envir = repel_cache, ifnotfound = NA)[[1]]
     if (inherits(db, "DBIConnection")) {
         gc(verbose = FALSE)
         DBI::dbDisconnect(db, shutdown = TRUE)
     }
     observer <- getOption("connectionObserver")
     if (!is.null(observer)) {
-        observer$connectionClosed("WAHISDB", "wahisclient")
+        observer$connectionClosed("MonetDB", "repellocal")
     }
 }
 
-wahis_cache <- new.env()
-reg.finalizer(wahis_cache, wahis_disconnect_, onexit = TRUE)
+repel_cache <- new.env()
+reg.finalizer(repel_cache, repel_local_disconnect_, onexit = TRUE)
+
+#' repel_remote_disconnect()
+#' @export
+repel_remote_disconnect <- function(){
+    observer <- getOption("connectionObserver")
+    if (!is.null(observer)) {
+        observer$connectionClosed("Postgres", "repelremote")
+    }
+}

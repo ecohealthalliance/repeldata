@@ -16,14 +16,14 @@
 #' @examples
 #' \donttest{
 #' \dontrun{
-#' wahis_db_delete()
+#' repel_local_delete()
 #' }
 #' }
-wahis_db_delete <- function() {
-    for (t in dbListTables(wahis_db())) {
-        dbRemoveTable(wahis_db(), t)
+repel_local_delete <- function() {
+    for (t in dbListTables(repel_local_conn())) {
+        dbRemoveTable(repel_local_conn(), t)
     }
-    update_wahis_pane()
+    update_local_repel_pane()
 }
 
 #' Get the status of the current local WAHIS database
@@ -35,10 +35,10 @@ wahis_db_delete <- function() {
 #' @importFrom DBI dbExistsTable
 #' @importFrom tools toTitleCase
 #' @examples
-#' wahis_status()
-wahis_status <- function(verbose = TRUE) {
-    if (DBI::dbExistsTable(wahis_db(), "wahis_status")) {
-        status <- DBI::dbReadTable(wahis_db(), "wahis_status")
+#' repel_local_status()
+repel_local_status <- function(verbose = TRUE) {
+    if (DBI::dbExistsTable(repel_local_conn(), "repel_local_status")) {
+        status <- DBI::dbReadTable(repel_local_conn(), "repel_local_status")
         status_msg <-
             paste0(
                 "WAHIS database status:\n",
@@ -49,7 +49,7 @@ wahis_status <- function(verbose = TRUE) {
             )
         out <- TRUE
     } else {
-        status_msg <- "Local WAHIS database empty or corrupt. Download with wahis_db_download()" #nolint
+        status_msg <- "Local REPEL database empty or corrupt. Download with repel_local_download()" #nolint
         out <- FALSE
     }
     if (verbose) message(status_msg)
