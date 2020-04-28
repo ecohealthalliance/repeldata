@@ -38,7 +38,10 @@ repel_local_download <- function(destdir = tempfile(),
     purrr::walk(data_files_df$Key, function(key) {
         f = fs::path(destdir, basename(key))
         save_object(object = key, bucket = "repeldb", file = f)
-        arkdb::unark(f, repel_local_conn(), lines = 100000, overwrite = TRUE)
+        tryCatch({
+            print(key)
+            arkdb::unark(f, repel_local_conn(), lines = 100000, overwrite = TRUE)
+            }, error=function(e){cat("ERROR :", conditionMessage(e), "\n")})
         if (cleanup) file.remove(f)
     })
     if (verbose) message("Calculating Stats...\n")
