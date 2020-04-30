@@ -2,11 +2,11 @@
 % Please edit documentation in R/connection-pane.R
 \name{repel_pane}
 \alias{repel_pane}
-\title{Open WAHIS database connection pane in RStudio}
+\title{Open REPEL database connection pane in RStudio}
 \usage{
 repel_pane(
-  conn = repel_local_conn(),
-  connectCode = "repeldata::repel_local_pane()",
+  conn = repel_remote_conn(),
+  connectCode = "repeldata::repel_remote_pane()",
   actions = list()
 )
 }

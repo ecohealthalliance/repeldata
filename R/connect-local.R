@@ -1,7 +1,11 @@
+#' Get location for local REPEL database
+#'
 #' @importFrom rappdirs user_data_dir
 repel_local_path <- function() {
     Sys.getenv("REPEL_DB_DIR", unset = rappdirs::user_data_dir("repeldata"))
 }
+
+
 
 repel_local_check_status <- function() {
     if (!repel_local_status(FALSE)) {
@@ -9,16 +13,13 @@ repel_local_check_status <- function() {
     }
 }
 
-#' The local WAHIS database
+#' The local REPEL database
 #'
-#' Returns a connection to the local WAHIS database. This is a DBI-compliant
-#' [MonetDBLite::MonetDBLite()] database connection. When using **dplyr**-based
-#' workflows, one typically accesses tables with functions such as
-#' [wahis_shipments()], but this function lets one interact with the database
-#' directly via SQL.
-#'
+#' Returns a connection to the local REPEL database. This is a DBI-compliant
+#' [MonetDBLite::MonetDBLite()] database connection. 
+#' 
 #' @param dbdir The location of the database on disk. Defaults to
-#' `wahisclient` under [rappdirs::user_data_dir()], or the environment variable `WAHIS_DB_DIR`.
+#' `repeldata` under [rappdirs::user_data_dir()], or the environment variable `WAHIS_DB_DIR`.
 #'
 #' @return A MonetDBLite DBI connection
 #' @importFrom DBI dbIsValid dbConnect
@@ -84,11 +85,4 @@ repel_local_disconnect_ <- function(environment = repel_cache) { # nolint
 repel_cache <- new.env()
 reg.finalizer(repel_cache, repel_local_disconnect_, onexit = TRUE)
 
-#' repel_remote_disconnect()
-#' @export
-repel_remote_disconnect <- function(){
-    observer <- getOption("connectionObserver")
-    if (!is.null(observer)) {
-        observer$connectionClosed("Postgres", "repelremote")
-    }
-}
+

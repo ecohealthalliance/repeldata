@@ -1,23 +1,4 @@
-# sql_action <- function() {
-#     if (requireNamespace("rstudioapi", quietly = TRUE) &&
-#         exists("documentNew", asNamespace("rstudioapi"))) {
-#         contents <- paste(
-#             "-- !preview conn=wahisclient::wahis_db()",
-#             "",
-#             "SELECT * FROM annual_reports_metadata LIMIT 100",
-#             "",
-#             sep = "\n"
-#         )
-#         
-#         rstudioapi::documentNew(
-#             text = contents, type = "sql",
-#             position = rstudioapi::document_position(2, 40),
-#             execute = FALSE
-#         )
-#     }
-# }
-
-#' Open WAHIS database connection pane in RStudio
+#' Open REPEL database connection pane in RStudio
 #'
 #' This function launches the RStudio "Connection" pane to interactively
 #' explore the database.
@@ -29,9 +10,8 @@
 #' if (!is.null(getOption("connectionObserver"))) wahis_pane()
 #' 
 
-#TODO update defaults to remote
-repel_pane <- function(conn = repel_local_conn(),
-                       connectCode = "repeldata::repel_local_pane()",
+repel_pane <- function(conn = repel_remote_conn(),
+                       connectCode = "repeldata::repel_remote_pane()",
                        actions = list()) {
     
     if(inherits(conn, "MonetDBEmbeddedConnection")){
@@ -92,11 +72,16 @@ repel_pane <- function(conn = repel_local_conn(),
     }
 }
 
-update_local_repel_pane <- function() {
-    observer <- getOption("connectionObserver")
-    if (!is.null(observer)) {
-        observer$connectionUpdated("MonetDB", "repellocal", "")
-    }
+
+#' Show REPEL (remote) database in the RStudio Connections Pane 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+repel_remote_pane <- function() {
+    repel_pane(conn = repel_remote_conn(),
+               connectCode = "repeldata::repel_remote_pane()")
 }
 
 update_remote_repel_pane <- function() {
@@ -105,3 +90,24 @@ update_remote_repel_pane <- function() {
         observer$connectionUpdated("Postgres", "repelremote", "")
     }
 }
+
+
+#' Show REPEL (local) database in the RStudio Connections Pane 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' 
+repel_local_pane <- function() {
+    repel_pane(conn = repel_local_conn(),
+               connectCode = "repeldata::repel_local_pane()")
+}
+
+update_local_repel_pane <- function() {
+    observer <- getOption("connectionObserver")
+    if (!is.null(observer)) {
+        observer$connectionUpdated("MonetDB", "repellocal", "")
+    }
+}
+

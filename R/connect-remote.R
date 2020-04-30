@@ -24,14 +24,16 @@ repel_remote_conn <- function(host = NULL, port = NULL, user = NULL, password = 
     return(conn)
 }
 
-#' Show REPEL (remote) database in the RStudio Connections Pane 
-#'
-#' @return
-#' @export
-#'
-#' @examples
-repel_remote_pane <- function() {
-    repel_pane(conn = repel_remote_conn(),
-               connectCode = "repeldata::repel_remote_pane()")
-}
 
+#' Disconnect from the remote REPEL database
+#' 
+#' @return 
+#' @export
+#' 
+#' @examples 
+repel_remote_disconnect <- function(){
+    observer <- getOption("connectionObserver")
+    if (!is.null(observer)) {
+        observer$connectionClosed("Postgres", "repelremote")
+    }
+}

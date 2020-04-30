@@ -1,10 +1,10 @@
-#' Download the WAHIS database to your local computer
+#' Download the REPEL database to your local computer
 #'
-#' This command downloads the WAHIS shipments database and populates a local
+#' This command downloads the REPEL shipments database and populates a local
 #' database. Note that you need EHA AWS access to do so for now.
 #'
 #' The database is stored by default under [rappdirs::user_data_dir()], or its
-#' location can be set with the environment variable `WAHIS_DB_DIR`.
+#' location can be set with the environment variable `REPEL_DB_DIR`.
 #'
 #' @param destdir Where to download the compressed files.
 #' @param cleanup Whether to delete the compressed files after loading into the database.
@@ -45,17 +45,46 @@ repel_local_download <- function(destdir = tempfile(),
         if (cleanup) file.remove(f)
     })
     if (verbose) message("Calculating Stats...\n")
-    DBI::dbWriteTable(repel_local_conn(), "repel_local_status", make_status_table(),
+    DBI::dbWriteTable(repel_local_conn(), "repel_local_status", make_local_status_table(),
                  overwrite = TRUE)
     update_local_repel_pane()
     if (verbose) message("Done!")
 }
 
+#' Get the status of the current local REPEL database
+#'
+#' @param verbose Whether to print a status message
+#'
+#' @return TRUE if the database exists, FALSE if it is not detected. (invisible)
+#' @export
+#' @importFrom DBI dbExistsTable
+#' @importFrom tools toTitleCase
+#' @examples
+#' repel_local_status()
+repel_local_status <- function(verbose = TRUE) {
+    if (DBI::dbExistsTable(repel_local_conn(), "repel_local_status")) {
+        status <- DBI::dbReadTable(repel_local_conn(), "repel_local_status")
+        status_msg <-
+            paste0(
+                "REPEL database status:\n",
+                paste0(toTitleCase(gsub("_", " ", names(status))),
+                       ": ", as.matrix(status),
+                       collapse = "\n"
+                )
+            )
+        out <- TRUE
+    } else {
+        status_msg <- "Local REPEL database empty or corrupt. Download with repel_local_download()" #nolint
+        out <- FALSE
+    }
+    if (verbose) message(status_msg)
+    invisible(out)
+}
 
 #' @importFrom DBI dbGetQuery
 #' @importFrom purrr map_dbl
 #' @importFrom tibble tibble
-make_status_table <- function() {
+make_local_status_table <- function() {
     sz <- sum(file.info(list.files(repel_local_path(),
                                    all.files = TRUE,
                                    recursive = TRUE,
@@ -71,3 +100,28 @@ make_status_table <- function() {
         location_on_disk = repel_local_path()
     )
 }
+
+
+#' Remove the local REPEL database
+#'
+#' Deletes all tables from the local database
+#'
+#' @return NULL
+#' @export
+#' @importFrom DBI dbListTables dbRemoveTable
+#'
+#' @examples
+#' \donttest{
+#' \dontrun{
+#' repel_local_delete()
+#' }
+#' }
+repel_local_delete <- function() {
+    for (t in dbListTables(repel_local_conn())) {
+        dbRemoveTable(repel_local_conn(), t)
+    }
+    update_local_repel_pane()
+}
+
+
+
