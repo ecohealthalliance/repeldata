@@ -1,5 +1,5 @@
-Package: wahisclient
-Title: wahisclient
+Package: repeldata
+Title: repeldata
 Version: 0.0.1
 Authors@R: c(
     person("Noam", "Ross", , "ross@ecohealthalliance.org", role = c("aut", "cre")),
@@ -9,8 +9,8 @@ Maintainer: Noam Ross <ross@ecohealthalliance.org>
 Description: Accesses data from the EHA REPEL project database.
 License: MIT + file LICENSE
 LazyData: true
-URL: https://github.com/ecohealthalliance/wahisclient
-BugReports: https://github.com/ecohealthalliance/wahisclient/issues
+URL: https://github.com/ecohealthalliance/repeldata
+BugReports: https://github.com/ecohealthalliance/repeldata/issues
 RoxygenNote: 7.0.2
 Encoding: UTF-8
 Language: en-US

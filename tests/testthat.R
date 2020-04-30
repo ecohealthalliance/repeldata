@@ -1,4 +1,4 @@
 library(testthat)
-library(wahisclient)
+library(repeldata)
 
-test_check("wahisclient")
+test_check("repeldata")

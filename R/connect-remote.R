@@ -15,23 +15,25 @@
 repel_remote_conn <- function(host = NULL, port = NULL, user = NULL, password = NULL) {
     conn <- DBI::dbConnect(
         RPostgres::Postgres(),
-        host  =host %||%  Sys.getenv("REPEL_REMOTE_HOST", "localhost"),
+        host = host %||%  Sys.getenv("REPEL_REMOTE_HOST", "kirby.ecohealthalliance.org"),
         port = port %||% Sys.getenv("REPEL_REMOTE_PORT", 22053),
         user = user %||% Sys.getenv("REPELDATA_USER"),
         password = password %||% Sys.getenv("REPELDATA_PASSWORD"),
-        dbname = Sys.getenv("repel")
+        dbname = "repel"
     )
     return(conn)
 }
 
-#' Show REPEL (remote) database in the RStudio Connections Pane 
-#'
-#' @return
-#' @export
-#'
-#' @examples
-repel_remote_pane <- function() {
-    wahis_pane(conn = repel_remote_conn(), dbname = "REPEL remote database",
-               connectCode = "wahisclient::repel_remote_pane()")
-}
 
+#' Disconnect from the remote REPEL database
+#' 
+#' @return 
+#' @export
+#' 
+#' @examples 
+repel_remote_disconnect <- function(){
+    observer <- getOption("connectionObserver")
+    if (!is.null(observer)) {
+        observer$connectionClosed("Postgres", "repelremote")
+    }
+}

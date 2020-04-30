@@ -1,23 +1,4 @@
-sql_action <- function() {
-    if (requireNamespace("rstudioapi", quietly = TRUE) &&
-        exists("documentNew", asNamespace("rstudioapi"))) {
-        contents <- paste(
-            "-- !preview conn=wahisclient::wahis_db()",
-            "",
-            "SELECT * FROM annual_reports_metadata LIMIT 100",
-            "",
-            sep = "\n"
-        )
-        
-        rstudioapi::documentNew(
-            text = contents, type = "sql",
-            position = rstudioapi::document_position(2, 40),
-            execute = FALSE
-        )
-    }
-}
-
-#' Open WAHIS database connection pane in RStudio
+#' Open REPEL database connection pane in RStudio
 #'
 #' This function launches the RStudio "Connection" pane to interactively
 #' explore the database.
@@ -27,16 +8,39 @@ sql_action <- function() {
 #'
 #' @examples
 #' if (!is.null(getOption("connectionObserver"))) wahis_pane()
-wahis_pane <- function(conn = wahis_db(), dbname = "REPEL local database",
-                       connectCode = "wahisclient::wahis_pane()",
-                       disconnect = wahisclient::wahis_disconnect) {
+#' 
+
+repel_pane <- function(conn = repel_remote_conn(),
+                       connectCode = "repeldata::repel_remote_pane()",
+                       actions = list()) {
+    
+    if(inherits(conn, "MonetDBEmbeddedConnection")){
+        dbname <- "REPEL local database"
+        host <- "repellocal"
+        type <- "MonetDB"
+        disconnect <- repeldata::repel_local_disconnect
+        actions <- list(
+            Status = list(
+                icon = system.file("img", "oie-logo.png", package = "repeldata"),
+                callback = repel_local_status
+            )
+        )
+    }
+    
+    if(inherits(conn, "PqConnection")){ 
+        dbname <- "REPEL remote database"
+        host <- "repelremote"
+        type <- "Postgres"
+        disconnect <- repeldata::repel_remote_disconnect
+    }
+    
     observer <- getOption("connectionObserver")
     if (!is.null(observer)) {
         observer$connectionOpened(
-            type = "wahisclient",
-            host = "wahisclient",
+            type = type, # message (postgresql or monetdb)
+            host = host, # unique id
             displayName = dbname,
-            icon = system.file("img", "eha_logo.png", package = "wahisclient"),
+            icon = system.file("img", "eha_logo.png", package = "repeldata"),
             connectCode = connectCode,
             disconnect = disconnect,
             listObjectTypes = function() {
@@ -56,33 +60,54 @@ wahis_pane <- function(conn = wahis_db(), dbname = "REPEL local database",
                 res <- DBI::dbSendQuery(conn,
                                         paste("SELECT * FROM", table, "LIMIT 1"))
                 on.exit(DBI::dbClearResult(res))
-                data.frame(
-                    name = res@env$info$names, type = res@env$info$types,
-                    stringsAsFactors = FALSE
-                )
+                DBI::dbColumnInfo(res)
             },
             previewObject = function(rowLimit, table) {  #nolint
                 DBI::dbGetQuery(conn,
                                 paste("SELECT * FROM", table, "LIMIT", rowLimit))
             },
-            actions = list(
-                Status = list(
-                    icon = system.file("img", "oie-logo.png", package = "wahisclient"),
-                    callback = wahis_status
-                ),
-                SQL = list(
-                    icon = system.file("img", "edit-sql.png", package = "wahisclient"),
-                    callback = sql_action
-                )
-            ),
+            actions = actions,
             connectionObject = conn
         )
     }
 }
 
-update_wahis_pane <- function() {
+
+#' Show REPEL (remote) database in the RStudio Connections Pane 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+repel_remote_pane <- function() {
+    repel_pane(conn = repel_remote_conn(),
+               connectCode = "repeldata::repel_remote_pane()")
+}
+
+update_remote_repel_pane <- function() {
     observer <- getOption("connectionObserver")
     if (!is.null(observer)) {
-        observer$connectionUpdated("wahisclient", "wahisclient", "")
+        observer$connectionUpdated("Postgres", "repelremote", "")
     }
 }
+
+
+#' Show REPEL (local) database in the RStudio Connections Pane 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' 
+repel_local_pane <- function() {
+    repel_pane(conn = repel_local_conn(),
+               connectCode = "repeldata::repel_local_pane()")
+}
+
+update_local_repel_pane <- function() {
+    observer <- getOption("connectionObserver")
+    if (!is.null(observer)) {
+        observer$connectionUpdated("MonetDB", "repellocal", "")
+    }
+}
+
