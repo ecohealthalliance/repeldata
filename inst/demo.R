@@ -11,11 +11,11 @@ repel_remote_disconnect()
 # Explore data ------------------------------------------------------------
 
 # connect to the remote database
-conn <- repeldata::repel_remote_conn()
+conn <- repel_remote_conn()
 
 # get table names and schema
 tables <- DBI::dbListTables(conn)
-schema <- wahis::repel_schema()
+schema <- repel_schema()
 
 # get annual report status
 annual_status <- dplyr::tbl(conn, "annual_reports_status") %>% 
@@ -60,4 +60,4 @@ ah_asf %>%
     View()
 
 # disconnect
-dbDisconnect(conn)
+DBI::dbDisconnect(conn)
