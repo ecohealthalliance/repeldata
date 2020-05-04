@@ -12,6 +12,3 @@ repel_local_pane()
 \description{
 Show REPEL (local) database in the RStudio Connections Pane
 }
-\examples{
-
-}

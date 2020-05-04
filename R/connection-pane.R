@@ -77,8 +77,6 @@ repel_pane <- function(conn = repel_remote_conn(),
 #'
 #' @return
 #' @export
-#'
-#' @examples
 repel_remote_pane <- function() {
     repel_pane(conn = repel_remote_conn(),
                connectCode = "repeldata::repel_remote_pane()")
@@ -96,8 +94,6 @@ update_remote_repel_pane <- function() {
 #'
 #' @return
 #' @export
-#'
-#' @examples
 #' 
 repel_local_pane <- function() {
     repel_pane(conn = repel_local_conn(),

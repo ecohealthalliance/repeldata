@@ -29,8 +29,6 @@ repel_remote_conn <- function(host = NULL, port = NULL, user = NULL, password = 
 #' 
 #' @return 
 #' @export
-#' 
-#' @examples 
 repel_remote_disconnect <- function(){
     observer <- getOption("connectionObserver")
     if (!is.null(observer)) {
