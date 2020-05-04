@@ -32,3 +32,4 @@ Suggests:
 Remotes:
   cran/MonetDBLite@0.6.0,
   ropensci/arkdb@comment-char
+  ecohealthalliance/wahis
