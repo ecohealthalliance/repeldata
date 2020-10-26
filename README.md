@@ -42,7 +42,7 @@ library(repeldata)
 repel_remote_pane()
 ```
 
-The __Connections__ pane (on the top-right corner of the RStudio default layout) will show all tables available in the database. Clicking on the arrows will show the field names and types, and clicking on the table icon with bring the tables into Viewer. 
+The __Connections__ pane (on the top-right corner of the RStudio default layout) will show all tables available in the database. Clicking on the arrows will show the field names and types, and clicking on the table icon will bring the tables into Viewer. 
 
 When you are done with your session, disconnect from the remote database.
 
@@ -52,7 +52,7 @@ repel_remote_disconnect()
 
 ### Local access
 
-To access the local database, you will need a AWS access keys in your `.Renviron`. Please contact Noam to set up your AWS account.
+To access the local database, you will need a AWS access key in your `.Renviron`. Please contact Noam to set up your AWS account.
 
 The easiest way to edit your `.Renviron` is with the __usethis__ package:  
 
