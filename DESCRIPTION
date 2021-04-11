@@ -11,12 +11,12 @@ License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/ecohealthalliance/repeldata
 BugReports: https://github.com/ecohealthalliance/repeldata/issues
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1.9000
 Encoding: UTF-8
 Language: en-US
 Imports:
     DBI,
-    MonetDBLite,
+    duckdb (>= 0.2.5),
     RPostgres,
     rappdirs,
     rstudioapi,
@@ -30,6 +30,5 @@ Suggests:
     spelling, 
     testthat
 Remotes:
-  cran/MonetDBLite@0.6.0,
-  ropensci/arkdb@comment-char,
+  ropensci/arkdb#38,
   ecohealthalliance/wahis

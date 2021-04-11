@@ -2,10 +2,12 @@
 #'
 #' @importFrom rappdirs user_data_dir
 repel_local_path <- function() {
-    Sys.getenv("REPEL_DB_DIR", unset = rappdirs::user_data_dir("repeldata"))
+    path <- fs::dir_create(
+        Sys.getenv("REPEL_DB_DIR", 
+                   unset = rappdirs::user_data_dir("repeldata"))
+    )
+    path
 }
-
-
 
 repel_local_check_status <- function() {
     if (!repel_local_status(FALSE)) {
@@ -16,14 +18,14 @@ repel_local_check_status <- function() {
 #' The local REPEL database
 #'
 #' Returns a connection to the local REPEL database. This is a DBI-compliant
-#' [MonetDBLite::MonetDBLite()] database connection. 
+#' [duckdb::duckdb()] database connection. 
 #' 
 #' @param dbdir The location of the database on disk. Defaults to
 #' `repeldata` under [rappdirs::user_data_dir()], or the environment variable `WAHIS_DB_DIR`.
 #'
-#' @return A MonetDBLite DBI connection
-#' @importFrom DBI dbIsValid dbConnect
-#' @importFrom MonetDBLite MonetDBLite
+#' @return A database connection
+#' @importFrom DBI dbIsValid dbConnect dbIsReadOnly
+#' @importFrom duckdb duckdb
 #' @export
 repel_local_conn <- function(dbdir = repel_local_path()) {
     db <- mget("repel_local_conn", envir = repel_cache, ifnotfound = NA)[[1]]
@@ -32,13 +34,12 @@ repel_local_conn <- function(dbdir = repel_local_path()) {
             return(db)
         }
     }
-    dbname <- dbdir
-    dir.create(dbname, FALSE)
+    dbname <- path(dbdir, "repeldata", ext = "db")
     
     tryCatch(
         {
             gc(verbose = FALSE)
-            db <- DBI::dbConnect(MonetDBLite::MonetDBLite(), dbname = dbdir)
+            db <- DBI::dbConnect(duckdb::duckdb(), dbdir = dbname)
         },
         error = function(e) {
             if (grepl("(Database lock|bad rolemask)", e)) {

@@ -14,10 +14,10 @@ repel_pane <- function(conn = repel_remote_conn(),
                        connectCode = "repeldata::repel_remote_pane()",
                        actions = list()) {
     
-    if(inherits(conn, "MonetDBEmbeddedConnection")){
+    if(inherits(conn, "duckdb_connection")){
         dbname <- "REPEL local database"
         host <- "repellocal"
-        type <- "MonetDB"
+        type <- "DuckDB"
         disconnect <- repeldata::repel_local_disconnect
         actions <- list(
             Status = list(

@@ -11,9 +11,9 @@ repel_local_conn(dbdir = repel_local_path())
 `repeldata` under [rappdirs::user_data_dir()], or the environment variable `WAHIS_DB_DIR`.}
 }
 \value{
-A MonetDBLite DBI connection
+A database connection
 }
 \description{
 Returns a connection to the local REPEL database. This is a DBI-compliant
-[MonetDBLite::MonetDBLite()] database connection.
+[duckdb::duckdb()] database connection.
 }

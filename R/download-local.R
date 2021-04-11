@@ -49,6 +49,7 @@ repel_local_download <- function(destdir = tempfile(),
                  overwrite = TRUE)
     update_local_repel_pane()
     if (verbose) message("Done!")
+    DBI::dbDisconnect(repel_local_conn(), shutdown = TRUE)
 }
 
 #' Get the status of the current local REPEL database
