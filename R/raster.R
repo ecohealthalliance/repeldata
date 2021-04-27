@@ -21,7 +21,7 @@ get_raster_vals <- function(conn = repel_remote_conn(), raster_name, lon, lat, c
     
     mp <- sf::st_as_text(sf::st_multipoint(cbind(lon, lat)))
     
-    out <- deplyr::select(
+    out <- dplyr::select(
         reduce(
             .x = map(raster_name, function(tab) {
                 query <- glue::glue("
