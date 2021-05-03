@@ -11,7 +11,7 @@ License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/ecohealthalliance/repeldata
 BugReports: https://github.com/ecohealthalliance/repeldata/issues
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Encoding: UTF-8
 Language: en-US
 Imports:
@@ -25,7 +25,10 @@ Imports:
     aws.signature,
     fs,
     purrr,
-    tibble
+    tibble,
+    sf,
+    dplyr,
+    glue
 Suggests:
     spelling, 
     testthat
