@@ -4,7 +4,12 @@
 \alias{repel_local_conn}
 \title{The local REPEL database}
 \usage{
-repel_local_conn(dbdir = repel_local_path())
+repel_local_conn(
+  dbdir = repel_local_path(),
+  readonly = TRUE,
+  cache_connection = TRUE,
+  memory_limit = getOption("duckdb_memory_limit", NA)
+)
 }
 \arguments{
 \item{dbdir}{The location of the database on disk. Defaults to

@@ -19,6 +19,7 @@ Imports:
     duckdb (>= 0.2.5),
     RPostgres,
     rappdirs,
+    readr,
     rstudioapi,
     arkdb,
     aws.s3,
