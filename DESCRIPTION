@@ -33,5 +33,5 @@ Suggests:
     spelling, 
     testthat
 Remotes:
-  ropensci/arkdb#38,
+  ropensci/arkdb,
   ecohealthalliance/wahis

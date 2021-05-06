@@ -17,7 +17,7 @@
 #' @importFrom arkdb unark
 #' @importFrom aws.s3 save_object get_bucket_df
 #' @importFrom fs dir_create path
-#'
+#' @importFrom dplyr filter 
 #' @examples
 #' \donttest{
 #' \dontrun{
@@ -32,24 +32,25 @@ repel_local_download <- function(destdir = tempfile(),
         aws.signature::use_credentials()  
     }
     if (verbose) message("Downloading data...\n")
-    purrr::walk(DBI::dbListTables(repel_local_conn()), ~DBI::dbRemoveTable(repel_local_conn(), .))
+    purrr::walk(DBI::dbListTables(repel_local_conn(readonly = FALSE)), ~DBI::dbRemoveTable(repel_local_conn(readonly = FALSE), .))
     fs::dir_create(destdir)
-    data_files_df <- get_bucket_df("repeldb", prefix = "csv")
+    data_files_df <- aws.s3::get_bucket_df("repeldb", prefix = "csv") %>% 
+        filter(!grepl("(raster_|spatial_ref_sys)", Key))
     purrr::walk(data_files_df$Key, function(key) {
         f = fs::path(destdir, basename(key))
         save_object(object = key, bucket = "repeldb", file = f)
         tryCatch({
             print(key)
-            arkdb::unark(f, repel_local_conn(), lines = 100000, overwrite = TRUE)
+            arkdb::unark(f, repel_local_conn(readonly = FALSE), lines = 100000, overwrite = TRUE)
             }, error=function(e){cat("ERROR :", conditionMessage(e), "\n")})
         if (cleanup) file.remove(f)
     })
     if (verbose) message("Calculating Stats...\n")
-    DBI::dbWriteTable(repel_local_conn(), "repel_local_status", make_local_status_table(),
+    DBI::dbWriteTable(repel_local_conn(readonly = FALSE), "repel_local_status", make_local_status_table(),
                  overwrite = TRUE)
     update_local_repel_pane()
     if (verbose) message("Done!")
-    DBI::dbDisconnect(repel_local_conn(), shutdown = TRUE)
+    repel_local_disconnect()
 }
 
 #' Get the status of the current local REPEL database

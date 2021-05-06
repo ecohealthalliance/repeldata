@@ -24,66 +24,28 @@ repel_local_check_status <- function() {
 #' `repeldata` under [rappdirs::user_data_dir()], or the environment variable `WAHIS_DB_DIR`.
 #'
 #' @return A database connection
-#' @importFrom DBI dbIsValid dbConnect dbIsReadOnly
-#' @importFrom duckdb duckdb
+#' @importFrom arkdb local_db
 #' @export
-repel_local_conn <- function(dbdir = repel_local_path()) {
-    db <- mget("repel_local_conn", envir = repel_cache, ifnotfound = NA)[[1]]
-    if (inherits(db, "DBIConnection")) {
-        if (DBI::dbIsValid(db)) {
-            return(db)
-        }
-    }
-    dbname <- path(dbdir, "repeldata", ext = "db")
-    
-    tryCatch(
-        {
-            gc(verbose = FALSE)
-            db <- DBI::dbConnect(duckdb::duckdb(), dbdir = dbname)
-        },
-        error = function(e) {
-            if (grepl("(Database lock|bad rolemask)", e)) {
-                stop(paste(
-                    "Local WAHIS database is locked by another R session.\n",
-                    "Try closing or running repel_local_disconnect() in that session."
-                ),
-                call. = FALSE
-                )
-            } else {
-                stop(e)
-            }
-        },
-        finally = NULL
-    )
-    
-    assign("repel_local_conn", db, envir = repel_cache)
-    db
+repel_local_conn <- function(dbdir = repel_local_path(), readonly = TRUE,
+                             cache_connection = TRUE,
+                             memory_limit = getOption("duckdb_memory_limit", NA)) {
+    arkdb::local_db(dbdir = dbdir,
+                    driver = "duckdb",
+                    readonly = readonly,
+                    cache_connection = cache_connection,
+                    memory_limit = memory_limit)
+
 }
 
 #' Disconnect from the WAHIS database
 #'
 #' A utility function for disconnecting from the database.
-#'
+#' @importFrom arkdb local_db_disconnect
 #' @examples
 #' repel_local_disconnect()
 #' @export
 #'
 repel_local_disconnect <- function() {
-    repel_local_disconnect_()
+    arkdb::local_db_disconnect(repel_local_conn())
 }
-repel_local_disconnect_ <- function(environment = repel_cache) { # nolint
-    db <- mget("repel_local_conn", envir = repel_cache, ifnotfound = NA)[[1]]
-    if (inherits(db, "DBIConnection")) {
-        gc(verbose = FALSE)
-        DBI::dbDisconnect(db, shutdown = TRUE)
-    }
-    observer <- getOption("connectionObserver")
-    if (!is.null(observer)) {
-        observer$connectionClosed("MonetDB", "repellocal")
-    }
-}
-
-repel_cache <- new.env()
-reg.finalizer(repel_cache, repel_local_disconnect_, onexit = TRUE)
-
 
