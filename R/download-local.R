@@ -14,10 +14,10 @@
 #'
 #' @return NULL
 #' @export
-#' @importFrom arkdb unark
+#' @importFrom arkdb unark streamable_readr_csv
+#' @importFrom readr read_csv
 #' @importFrom aws.s3 save_object get_bucket_df
 #' @importFrom fs dir_create path
-#'
 #' @examples
 #' \donttest{
 #' \dontrun{
@@ -31,24 +31,34 @@ repel_local_download <- function(destdir = tempfile(),
     if(load_aws_credentials && requireNamespace("aws.signature", quietly = TRUE)) {
         aws.signature::use_credentials()  
     }
+    
+    #Hide readr progress bars
+    oldopt <- options("readr.show_progress")
+    options(readr.show_progress = FALSE)
+    on.exit(options(readr.show_progress = oldopt))
+    
     if (verbose) message("Downloading data...\n")
-    purrr::walk(DBI::dbListTables(repel_local_conn()), ~DBI::dbRemoveTable(repel_local_conn(), .))
+    purrr::walk(DBI::dbListTables(repel_local_conn(readonly = FALSE)), ~DBI::dbRemoveTable(repel_local_conn(readonly = FALSE), .))
     fs::dir_create(destdir)
-    data_files_df <- get_bucket_df("repeldb", prefix = "csv")
+    
+    data_files_df <- aws.s3::get_bucket_df("repeldb", prefix = "csv") %>% 
+        filter(!grepl("(raster_|spatial_ref_sys)", Key)) #Exclude raster data only supported by postGIS
+    
     purrr::walk(data_files_df$Key, function(key) {
         f = fs::path(destdir, basename(key))
         save_object(object = key, bucket = "repeldb", file = f)
         tryCatch({
             print(key)
-            arkdb::unark(f, repel_local_conn(), lines = 100000, overwrite = TRUE)
+            arkdb::unark(f, repel_local_conn(readonly = FALSE), lines = 100000, overwrite = TRUE, streamable_table = streamable_readr_csv(), guess_max = 100000)
             }, error=function(e){cat("ERROR :", conditionMessage(e), "\n")})
         if (cleanup) file.remove(f)
     })
     if (verbose) message("Calculating Stats...\n")
-    DBI::dbWriteTable(repel_local_conn(), "repel_local_status", make_local_status_table(),
+    DBI::dbWriteTable(repel_local_conn(readonly = FALSE), "repel_local_status", make_local_status_table(),
                  overwrite = TRUE)
     update_local_repel_pane()
     if (verbose) message("Done!")
+    repel_local_disconnect()
 }
 
 #' Get the status of the current local REPEL database

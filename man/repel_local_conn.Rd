@@ -4,16 +4,21 @@
 \alias{repel_local_conn}
 \title{The local REPEL database}
 \usage{
-repel_local_conn(dbdir = repel_local_path())
+repel_local_conn(
+  dbdir = repel_local_path(),
+  readonly = TRUE,
+  cache_connection = TRUE,
+  memory_limit = getOption("duckdb_memory_limit", NA)
+)
 }
 \arguments{
 \item{dbdir}{The location of the database on disk. Defaults to
 `repeldata` under [rappdirs::user_data_dir()], or the environment variable `WAHIS_DB_DIR`.}
 }
 \value{
-A MonetDBLite DBI connection
+A database connection
 }
 \description{
 Returns a connection to the local REPEL database. This is a DBI-compliant
-[MonetDBLite::MonetDBLite()] database connection.
+[duckdb::duckdb()] database connection.
 }
