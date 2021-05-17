@@ -127,8 +127,8 @@ make_local_status_table <- function() {
 #' }
 #' }
 repel_local_delete <- function() {
-    for (t in dbListTables(repel_local_conn())) {
-        dbRemoveTable(repel_local_conn(), t)
+    for (t in dbListTables(repel_local_conn(readonly = FALSE))) {
+        dbRemoveTable(repel_local_conn(readonly = FALSE), t)
     }
     update_local_repel_pane()
 }
