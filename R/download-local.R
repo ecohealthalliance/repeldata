@@ -14,6 +14,7 @@
 #'
 #' @return NULL
 #' @export
+#' @import dplyr
 #' @importFrom arkdb unark streamable_readr_csv
 #' @importFrom readr read_csv
 #' @importFrom aws.s3 save_object get_bucket_df
