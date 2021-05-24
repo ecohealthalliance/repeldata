@@ -50,7 +50,8 @@ repel_local_download <- function(destdir = tempfile(),
         save_object(object = key, bucket = "repeldb", file = f)
         tryCatch({
             print(key)
-            arkdb::unark(f, repel_local_conn(readonly = FALSE), lines = 100000, overwrite = TRUE, streamable_table = streamable_readr_csv(), guess_max = 100000)
+            arkdb::unark(f, repel_local_conn(readonly = FALSE), lines = 100000, 
+                         overwrite = TRUE, streamable_table = repel_streamable_readr_csv(), guess_max = 100000)
             }, error=function(e){cat("ERROR :", conditionMessage(e), "\n")})
         if (cleanup) file.remove(f)
     })
