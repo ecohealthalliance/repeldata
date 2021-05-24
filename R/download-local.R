@@ -27,8 +27,8 @@
 #' }
 #TODO get AWS LastModified
 repel_local_download <- function(destdir = tempfile(),
-                              cleanup = TRUE, verbose = interactive(),
-                              load_aws_credentials = TRUE) {
+                                 cleanup = TRUE, verbose = interactive(),
+                                 load_aws_credentials = TRUE) {
     if(load_aws_credentials && requireNamespace("aws.signature", quietly = TRUE)) {
         aws.signature::use_credentials()  
     }
@@ -39,11 +39,14 @@ repel_local_download <- function(destdir = tempfile(),
     on.exit(options(readr.show_progress = oldopt))
     
     if (verbose) message("Downloading data...\n")
-    purrr::walk(DBI::dbListTables(repel_local_conn(readonly = FALSE)), ~DBI::dbRemoveTable(repel_local_conn(readonly = FALSE), .))
-    fs::dir_create(destdir)
+    
     
     data_files_df <- aws.s3::get_bucket_df("repeldb", prefix = "csv") %>% 
         filter(!grepl("(raster_|spatial_ref_sys)", Key)) #Exclude raster data only supported by postGIS
+    
+    #purrr::walk(DBI::dbListTables(repel_local_conn(readonly = FALSE)), ~DBI::dbRemoveTable(repel_local_conn(readonly = FALSE), .))
+    repel_local_delete()
+    fs::dir_create(destdir)
     
     purrr::walk(data_files_df$Key, function(key) {
         f = fs::path(destdir, basename(key))
@@ -51,13 +54,14 @@ repel_local_download <- function(destdir = tempfile(),
         tryCatch({
             print(key)
             arkdb::unark(f, repel_local_conn(readonly = FALSE), lines = 100000, 
-                         overwrite = TRUE, streamable_table = repel_streamable_readr_csv(), guess_max = 100000)
-            }, error=function(e){cat("ERROR :", conditionMessage(e), "\n")})
+                         overwrite = TRUE, streamable_table = repel_streamable_readr_csv(), guess_max = 100000,
+                         try_native = TRUE)
+        }, error=function(e){cat("ERROR :", conditionMessage(e), "\n")})
         if (cleanup) file.remove(f)
     })
     if (verbose) message("Calculating Stats...\n")
     DBI::dbWriteTable(repel_local_conn(readonly = FALSE), "repel_local_status", make_local_status_table(),
-                 overwrite = TRUE)
+                      overwrite = TRUE)
     update_local_repel_pane()
     if (verbose) message("Done!")
     repel_local_disconnect()
@@ -129,10 +133,15 @@ make_local_status_table <- function() {
 #' }
 #' }
 repel_local_delete <- function() {
-    for (t in dbListTables(repel_local_conn(readonly = FALSE))) {
-        dbRemoveTable(repel_local_conn(readonly = FALSE), t)
+    x <- try(repel_local_disconnect(), silent = TRUE)
+    if (inherits(x, "try-error")) {
+        fs::dir_delete(repel_local_path())
+    } else {
+        for (t in dbListTables(repel_local_conn(readonly = FALSE))) {
+            dbRemoveTable(repel_local_conn(readonly = FALSE), t)
+        }
     }
-    update_local_repel_pane()
+    #update_local_repel_pane()
 }
 
 
