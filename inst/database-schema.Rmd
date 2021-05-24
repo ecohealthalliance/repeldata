@@ -1,14 +1,14 @@
 # Database Contents, Sources, and Schema
 
-The REPEL database contains data curated from multiple sources of animal disease occurrence and  covariates of disease spread (e.g., trade, animal movement). The database is regularly updated as new data becomes available. Here, we provide an overview of the tables in the REPEL database. Descriptions of all table fields can be viewed with `wahis::repel_schema()`.
+The REPEL database contains data curated from multiple sources of animal disease occurrence and covariates of disease spread (e.g., trade, animal movement). The database is regularly updated as new data becomes available. Here, we provide an overview of the tables in the REPEL database. Descriptions of all table fields can be viewed with `wahis::repel_schema()` or `repeldata::repel_schema()`.
 
 ## Disease Tables
 
-These tables contain disease reports and supplementary country attribute and health infrastructure information extracted from the World Animal Health Information Database (WAHIS). Managed by the World Organization for Animal Health (OIE), WAHIS contains annual disease summary reports and individual disease outbreak reports from 174 countries and territories. We scrape these reports from non-structured html pages from the OIE website and standardize them into structured tables.
+These tables contain disease reports and supplementary country attribute and health infrastructure information extracted from the World Animal Health Information Database (WAHIS). Managed by the World Organization for Animal Health (OIE), WAHIS contains annual disease summary reports and individual disease outbreak reports from 174 countries and territories. We download these reports from the OIE API and standardize them into structured tables.
 
-__annual_report_x__ tables include summaries by 6-month semesters (Jan - Jun and Jul - Dec) and by year. 
+### Annual report tables
 
-__outbreak_report_x__ tables are are individual disease reports from data released on a weekly basis. Outbreaks are tracked as threads with new events continuously reported until the outbreak is resolved or the disease becomes endemic. 
+Annual report tables include summaries by 6-month semesters (Jan - Jun and Jul - Dec) and by year. 
 
 * __annual_reports_status__  
 Indicates whether reports are available through WAHIS for all countries, years, and semesters
@@ -58,23 +58,21 @@ Vaccine production capability by disease
 * __annual_reports_vaccine_production__  
 Vaccine doses produced and exported
 
+### Outbreak report tables
+
+Outbreak tables are are individual disease reports from data released on a weekly basis. Outbreaks are tracked as threads with new events continuously reported until the outbreak is resolved or the disease becomes endemic. 
+  
 * __outbreak_reports_ingest_status_log__  
-List of reports IDs in database
+List of reports in database. `report_info_id` can be appended to "https://wahis.oie.int/pi/getReport/" to see the report API.
 
 * __outbreak_reports_events__  
-General event information including disease and disease status. Disease names are standardized to the [Animal Disease Ontology](http://agroportal.lirmm.fr/ontologies/ANDO]) from the French National research institute for agriculture, food and the environment.
+High-level event information including country, disease and disease status. Disease names are standardized to the [Animal Disease Ontology](http://agroportal.lirmm.fr/ontologies/ANDO]) from the French National research institute for agriculture, food and the environment. Each row is an outbreak report. `report_id` is the unique report ID.
 
 * __outbreak_reports_outbreaks__  
-Provides outbreak locations, species affected, counts of susceptible, cases, deaths, killed
-
-* __outbreak_reports_outbreaks_summary__  
-Provides total counts of susceptible, cases, deaths, killed by taxa (summed over all locations within country)
+Detailed location and impact data for outbreak events. This table can be joined with `outbreak_reports_events` by `report_id`. `outbreak_location_id` is a unique ID for each location (e.g, farm or village) within a outbreak.
 
 * __outbreak_reports_diseases_unmatched__  
-Disease names that were not successfully matched against the ANDO database. These require manual review. Note that the unstandardized disease reports are included in the database.
-
-* __outbreak_reports_laboratories__  
-Names of laboratories and testing information 
+Disease names that were not successfully matched against the ANDO database. These require manual review. Note that these diseases are not removed from the database.
 
 ## Connect Tables
 
