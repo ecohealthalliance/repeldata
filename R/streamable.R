@@ -5,8 +5,8 @@
 repel_streamable_readr_csv <- function() {
     
     read <- function(file, ...) {
-        readr::read_csv(file, col_types = readr::cols(
-            date_of_last_occurrence_if_absent = readr::col_character()), ...)
+        suppressWarnings(readr::read_csv(file, col_types = readr::cols(
+            date_of_last_occurrence_if_absent = readr::col_character()), ...))
     }
     write <- function(x, path, omit_header = FALSE) {
         readr::write_csv(x = x, file = path, append = omit_header)
