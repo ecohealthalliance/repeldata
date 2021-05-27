@@ -20,6 +20,7 @@
 #' @importFrom readr read_csv
 #' @importFrom aws.s3 save_object get_bucket_df
 #' @importFrom fs dir_create path
+#' @importFrom rlang parse_expr
 #' @examples
 #' \donttest{
 #' \dontrun{

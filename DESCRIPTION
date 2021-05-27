@@ -29,7 +29,9 @@ Imports:
     tibble,
     sf,
     dplyr,
-    glue
+    glue,
+    stringr,
+    rlang
 Suggests:
     spelling, 
     testthat
