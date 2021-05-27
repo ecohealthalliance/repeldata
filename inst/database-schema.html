@@ -169,10 +169,10 @@ pre code {
 
 <div id="database-contents-sources-and-schema" class="section level1">
 <h1>Database Contents, Sources, and Schema</h1>
-<p>The REPEL database contains data curated from multiple sources of animal disease occurrence and covariates of disease spread (e.g., trade, animal movement). The database is regularly updated as new data becomes available. Here, we provide an overview of the tables in the REPEL database. Descriptions of all table fields can be viewed with <code>wahis::repel_schema()</code> or <code>repeldata::repel_schema()</code>.</p>
+<p>The REPEL database contains data curated from multiple sources of animal disease occurrence and covariates of disease spread (e.g., trade, animal movement). The database is regularly updated as new data becomes available. Here, we provide an overview of the tables in the REPEL database. Descriptions of all table fields can be viewed with <code>repeldata::repel_fields_schema()</code> [WORK IN PROGRESS]</p>
 <div id="disease-tables" class="section level2">
 <h2>Disease Tables</h2>
-<p>These tables contain disease reports and supplementary country attribute and health infrastructure information extracted from the World Animal Health Information Database (WAHIS). Managed by the World Organization for Animal Health (OIE), WAHIS contains annual disease summary reports and individual disease outbreak reports from 174 countries and territories. We download these reports from the OIE API and standardize them into structured tables.</p>
+<p>These tables contain disease reports and supplementary country attribute and health infrastructure information extracted from the <a href="https://wahis.oie.int/#/report-management">World Animal Health Information Database</a> (WAHIS). Managed by the World Organization for Animal Health (OIE), WAHIS contains annual disease summary reports and individual disease outbreak reports from 174 countries and territories. We download these reports from the OIE API and standardize them into structured tables.</p>
 <div id="annual-report-tables" class="section level3">
 <h3>Annual report tables</h3>
 <p>Annual report tables include summaries by 6-month semesters (Jan - Jun and Jul - Dec) and by year.</p>
