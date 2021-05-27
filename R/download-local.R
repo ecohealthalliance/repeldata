@@ -10,11 +10,12 @@
 #' @param cleanup Whether to delete the compressed files after loading into the database.
 #' @param verbose Whether to display messages and download progress
 #' @param load_aws_credentials Whether to use credentials from [aws.signature::use_credentials()].  If FALSE, AWS credentials must be provided as environment variables.
+#' @param raw_data_only Whether to download only raw data. TRUE includes REPEL model predictions.
 
 #'
 #' @return NULL
 #' @export
-#' @import dplyr
+#' @import dplyr stringr
 #' @importFrom arkdb unark streamable_readr_csv
 #' @importFrom readr read_csv
 #' @importFrom aws.s3 save_object get_bucket_df
@@ -28,7 +29,8 @@
 #TODO get AWS LastModified
 repel_local_download <- function(destdir = tempfile(),
                                  cleanup = TRUE, verbose = interactive(),
-                                 load_aws_credentials = FALSE) {
+                                 load_aws_credentials = FALSE,
+                                 raw_data_only = FALSE) {
     
     if(load_aws_credentials && requireNamespace("aws.signature", quietly = TRUE)) {
         aws.signature::use_credentials()  
@@ -39,16 +41,24 @@ repel_local_download <- function(destdir = tempfile(),
     options(readr.show_progress = FALSE)
     on.exit(options(readr.show_progress = oldopt))
     
-    if (verbose) message("Downloading data...\n")
-    
+    # Get files to download
     data_files_df <- aws.s3::get_bucket_df("repeldb", prefix = "csv") %>% 
         filter(!grepl("(raster_|spatial_ref_sys)", Key)) #Exclude raster data only supported by postGIS
     
+    if(raw_data_only){
+        data_files_df <- data_files_df %>% 
+            filter(stringr::str_detect(Key, "annual_|outbreak_|connect_|country_|worldbank_"))
+    }
+    
+    # Clear local database prior to download
     repel_local_delete()
     fs::dir_create(destdir)
     
+    # Load schema for field types
     schema <- repel_fields_schema()
     
+    # Download data
+    if (verbose) message("Downloading data...\n")
     purrr::walk(data_files_df$Key, function(key) {
         
         f = fs::path(destdir, basename(key))
