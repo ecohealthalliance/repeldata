@@ -1,10 +1,10 @@
 #' Custom version of arkdb::streamable_readr_csv
 #' @import readr arkdb
 #' @noRd
-repel_streamable_readr_csv <- function(field_types) {
+repel_streamable_readr_csv <- function() {
     
     read <- function(file, ...) {
-        readr::read_csv(file, col_types = eval(rlang::parse_expr(field_types)), ...)
+        readr::read_csv(file, ...)
     }
     write <- function(x, path, omit_header = FALSE) {
         readr::write_csv(x = x, file = path, append = omit_header)

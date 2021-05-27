@@ -67,12 +67,14 @@ repel_local_download <- function(destdir = tempfile(),
             filter(table == stringr::str_remove_all(key, ".csv.xz|csv/")) %>% 
             mutate(row_name = paste0(column_name, " = ", data_type))
         field_types <- paste0("cols(", paste(field_type_lookup$row_name, collapse = ", "), ")")
-
+        
         tryCatch({
             print(key)
             arkdb::unark(f, repel_local_conn(readonly = FALSE), lines = 100000, 
-                         overwrite = TRUE, streamable_table = repel_streamable_readr_csv(field_types), guess_max = 100000,
-                         try_native = TRUE)
+                         overwrite = TRUE, streamable_table = repel_streamable_readr_csv(), 
+                         col_types = eval(rlang::parse_expr(field_types)), 
+                         guess_max = 100000,
+                         try_native = FALSE)
         }, error=function(e){cat("ERROR :", conditionMessage(e), "\n")})
         if (cleanup) file.remove(f)
     })
