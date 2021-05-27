@@ -8,7 +8,7 @@ repel_local_download(
   destdir = tempfile(),
   cleanup = TRUE,
   verbose = interactive(),
-  load_aws_credentials = TRUE
+  load_aws_credentials = FALSE
 )
 }
 \arguments{

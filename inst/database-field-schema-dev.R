@@ -34,6 +34,16 @@ lookup <- bind_rows(connect_ots_lookup, connect_fao_lookup)
 schema <- schema %>% 
     left_join(lookup)
 
+schema <- schema %>% 
+    mutate(data_type = case_when(
+        data_type == "text" ~ "col_character()",
+        data_type == "double precision"  ~ "col_double()",
+        data_type == "boolean"  ~ "col_logical()",
+        data_type == "integer"  ~ "col_integer()",
+        data_type == "timestamp with time zone" ~ "col_datetime()",
+        data_type == "date" ~ "col_date()"
+    ))
+
 # google drive to edit
 gs4_create("repeldata-schema", sheets = list(fields = schema))
 #TODO gsread
