@@ -28,7 +28,8 @@
 #TODO get AWS LastModified
 repel_local_download <- function(destdir = tempfile(),
                                  cleanup = TRUE, verbose = interactive(),
-                                 load_aws_credentials = TRUE) {
+                                 load_aws_credentials = FALSE) {
+    
     if(load_aws_credentials && requireNamespace("aws.signature", quietly = TRUE)) {
         aws.signature::use_credentials()  
     }
@@ -40,21 +41,27 @@ repel_local_download <- function(destdir = tempfile(),
     
     if (verbose) message("Downloading data...\n")
     
-    
     data_files_df <- aws.s3::get_bucket_df("repeldb", prefix = "csv") %>% 
         filter(!grepl("(raster_|spatial_ref_sys)", Key)) #Exclude raster data only supported by postGIS
     
-    #purrr::walk(DBI::dbListTables(repel_local_conn(readonly = FALSE)), ~DBI::dbRemoveTable(repel_local_conn(readonly = FALSE), .))
     repel_local_delete()
     fs::dir_create(destdir)
     
+    schema <- repel_fields_schema()
+    
     purrr::walk(data_files_df$Key, function(key) {
+        
         f = fs::path(destdir, basename(key))
         save_object(object = key, bucket = "repeldb", file = f)
+        field_type_lookup <- schema %>% 
+            filter(table == stringr::str_remove_all(key, ".csv.xz|csv/")) %>% 
+            mutate(row_name = paste0(column_name, " = ", data_type))
+        field_types <- paste0("cols(", paste(field_type_lookup$row_name, collapse = ", "), ")")
+
         tryCatch({
             print(key)
             arkdb::unark(f, repel_local_conn(readonly = FALSE), lines = 100000, 
-                         overwrite = TRUE, streamable_table = repel_streamable_readr_csv(), guess_max = 100000,
+                         overwrite = TRUE, streamable_table = repel_streamable_readr_csv(field_types), guess_max = 100000,
                          try_native = TRUE)
         }, error=function(e){cat("ERROR :", conditionMessage(e), "\n")})
         if (cleanup) file.remove(f)
