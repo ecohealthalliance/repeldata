@@ -1,0 +1,540 @@
+column_name,data_type,table,description
+country,text,annual_reports_animal_diseases,NA
+country_iso3c,text,annual_reports_animal_diseases,NA
+report,text,annual_reports_animal_diseases,NA
+report_year,double precision,annual_reports_animal_diseases,NA
+report_months,text,annual_reports_animal_diseases,NA
+report_semester,double precision,annual_reports_animal_diseases,NA
+disease,text,annual_reports_animal_diseases,NA
+disease_population,text,annual_reports_animal_diseases,NA
+disease_class,text,annual_reports_animal_diseases,NA
+ando_id,text,annual_reports_animal_diseases,NA
+disease_status,text,annual_reports_animal_diseases,NA
+new_outbreaks,double precision,annual_reports_animal_diseases,NA
+total_outbreaks,double precision,annual_reports_animal_diseases,NA
+taxa,text,annual_reports_animal_diseases,NA
+oie_listed,boolean,annual_reports_animal_diseases,NA
+serotype,text,annual_reports_animal_diseases,NA
+notes,text,annual_reports_animal_diseases,NA
+date_of_last_occurrence_if_absent,date,annual_reports_animal_diseases,NA
+country,text,annual_reports_animal_diseases_detail,NA
+country_iso3c,text,annual_reports_animal_diseases_detail,NA
+report,text,annual_reports_animal_diseases_detail,NA
+report_year,double precision,annual_reports_animal_diseases_detail,NA
+report_months,text,annual_reports_animal_diseases_detail,NA
+report_semester,double precision,annual_reports_animal_diseases_detail,NA
+disease,text,annual_reports_animal_diseases_detail,NA
+disease_population,text,annual_reports_animal_diseases_detail,NA
+disease_class,text,annual_reports_animal_diseases_detail,NA
+ando_id,text,annual_reports_animal_diseases_detail,NA
+disease_status,text,annual_reports_animal_diseases_detail,NA
+period,text,annual_reports_animal_diseases_detail,NA
+temporal_scale,text,annual_reports_animal_diseases_detail,NA
+adm,text,annual_reports_animal_diseases_detail,NA
+adm_type,text,annual_reports_animal_diseases_detail,NA
+new_outbreaks_detail,double precision,annual_reports_animal_diseases_detail,NA
+total_outbreaks_detail,double precision,annual_reports_animal_diseases_detail,NA
+serotype,text,annual_reports_animal_diseases_detail,NA
+taxa,text,annual_reports_animal_diseases_detail,NA
+country,text,annual_reports_animal_hosts,NA
+country_iso3c,text,annual_reports_animal_hosts,NA
+report,text,annual_reports_animal_hosts,NA
+report_year,double precision,annual_reports_animal_hosts,NA
+report_months,text,annual_reports_animal_hosts,NA
+report_semester,double precision,annual_reports_animal_hosts,NA
+disease,text,annual_reports_animal_hosts,NA
+disease_population,text,annual_reports_animal_hosts,NA
+disease_class,text,annual_reports_animal_hosts,NA
+ando_id,text,annual_reports_animal_hosts,NA
+disease_status,text,annual_reports_animal_hosts,NA
+taxa,text,annual_reports_animal_hosts,NA
+official_vaccination,double precision,annual_reports_animal_hosts,NA
+susceptible,double precision,annual_reports_animal_hosts,NA
+cases,double precision,annual_reports_animal_hosts,NA
+deaths,double precision,annual_reports_animal_hosts,NA
+killed_and_disposed_of,double precision,annual_reports_animal_hosts,NA
+slaughtered,double precision,annual_reports_animal_hosts,NA
+vaccination_in_response_to_the_outbreak,double precision,annual_reports_animal_hosts,NA
+serotype,text,annual_reports_animal_hosts,NA
+measuring_units,text,annual_reports_animal_hosts,NA
+control_measures,text,annual_reports_animal_hosts,NA
+country,text,annual_reports_animal_hosts_detail,NA
+country_iso3c,text,annual_reports_animal_hosts_detail,NA
+report,text,annual_reports_animal_hosts_detail,NA
+report_year,double precision,annual_reports_animal_hosts_detail,NA
+report_months,text,annual_reports_animal_hosts_detail,NA
+report_semester,double precision,annual_reports_animal_hosts_detail,NA
+disease,text,annual_reports_animal_hosts_detail,NA
+disease_population,text,annual_reports_animal_hosts_detail,NA
+disease_class,text,annual_reports_animal_hosts_detail,NA
+ando_id,text,annual_reports_animal_hosts_detail,NA
+disease_status,text,annual_reports_animal_hosts_detail,NA
+taxa,text,annual_reports_animal_hosts_detail,NA
+family_name,text,annual_reports_animal_hosts_detail,NA
+latin_name,text,annual_reports_animal_hosts_detail,NA
+period,text,annual_reports_animal_hosts_detail,NA
+temporal_scale,text,annual_reports_animal_hosts_detail,NA
+adm,text,annual_reports_animal_hosts_detail,NA
+adm_type,text,annual_reports_animal_hosts_detail,NA
+susceptible_detail,double precision,annual_reports_animal_hosts_detail,NA
+cases_detail,double precision,annual_reports_animal_hosts_detail,NA
+deaths_detail,double precision,annual_reports_animal_hosts_detail,NA
+killed_and_disposed_of_detail,double precision,annual_reports_animal_hosts_detail,NA
+slaughtered_detail,double precision,annual_reports_animal_hosts_detail,NA
+vaccination_in_response_to_the_outbreak_detail,double precision,annual_reports_animal_hosts_detail,NA
+serotype,text,annual_reports_animal_hosts_detail,NA
+measuring_units,text,annual_reports_animal_hosts_detail,NA
+country,text,annual_reports_animal_population,NA
+country_iso3c,text,annual_reports_animal_population,NA
+report_year,double precision,annual_reports_animal_population,NA
+report_months,text,annual_reports_animal_population,NA
+report_semester,double precision,annual_reports_animal_population,NA
+taxa,text,annual_reports_animal_population,NA
+production,text,annual_reports_animal_population,NA
+population_count,text,annual_reports_animal_population,NA
+population_units,text,annual_reports_animal_population,NA
+producers_count,text,annual_reports_animal_population,NA
+producers_units,text,annual_reports_animal_population,NA
+report,text,annual_reports_animal_population,NA
+country,text,annual_reports_disease_humans,NA
+country_iso3c,text,annual_reports_disease_humans,NA
+report_year,double precision,annual_reports_disease_humans,NA
+report_months,text,annual_reports_disease_humans,NA
+report_semester,double precision,annual_reports_disease_humans,NA
+disease,text,annual_reports_disease_humans,NA
+human_cases,double precision,annual_reports_disease_humans,NA
+human_deaths,double precision,annual_reports_disease_humans,NA
+report,text,annual_reports_disease_humans,NA
+ando_id,text,annual_reports_disease_humans,NA
+disease_class,text,annual_reports_disease_humans,NA
+human_disease_status,text,annual_reports_disease_humans,NA
+disease,text,annual_reports_diseases_unmatched,NA
+table,text,annual_reports_diseases_unmatched,NA
+report,text,annual_reports_ingest_status_log,NA
+country_iso3c,text,annual_reports_ingest_status_log,NA
+report_year,double precision,annual_reports_ingest_status_log,NA
+report_semester,double precision,annual_reports_ingest_status_log,NA
+in_database,boolean,annual_reports_ingest_status_log,NA
+ingest_error,text,annual_reports_ingest_status_log,NA
+country,text,annual_reports_national_reference_laboratories,NA
+country_iso3c,text,annual_reports_national_reference_laboratories,NA
+report_year,double precision,annual_reports_national_reference_laboratories,NA
+report_months,text,annual_reports_national_reference_laboratories,NA
+report_semester,double precision,annual_reports_national_reference_laboratories,NA
+laboratory_name,text,annual_reports_national_reference_laboratories,NA
+laboratory_contact,text,annual_reports_national_reference_laboratories,NA
+laboratory_latitude,text,annual_reports_national_reference_laboratories,NA
+laboratory_longitude,text,annual_reports_national_reference_laboratories,NA
+report,text,annual_reports_national_reference_laboratories,NA
+country,text,annual_reports_national_reference_laboratories_detail,NA
+country_iso3c,text,annual_reports_national_reference_laboratories_detail,NA
+report_year,double precision,annual_reports_national_reference_laboratories_detail,NA
+report_months,text,annual_reports_national_reference_laboratories_detail,NA
+report_semester,double precision,annual_reports_national_reference_laboratories_detail,NA
+laboratory_name,text,annual_reports_national_reference_laboratories_detail,NA
+disease,text,annual_reports_national_reference_laboratories_detail,NA
+test_type,text,annual_reports_national_reference_laboratories_detail,NA
+report,text,annual_reports_national_reference_laboratories_detail,NA
+country,text,annual_reports_status,NA
+country_iso3c,text,annual_reports_status,NA
+report_year,double precision,annual_reports_status,NA
+status_code,double precision,annual_reports_status,NA
+report_semester,double precision,annual_reports_status,NA
+reported,boolean,annual_reports_status,NA
+datettime_checked_reported,timestamp with time zone,annual_reports_status,NA
+report,text,annual_reports_status,NA
+country,text,annual_reports_submission_info,NA
+country_iso3c,text,annual_reports_submission_info,NA
+report_year,double precision,annual_reports_submission_info,NA
+report_months,text,annual_reports_submission_info,NA
+report_semester,double precision,annual_reports_submission_info,NA
+submission_info,text,annual_reports_submission_info,NA
+submission_value,text,annual_reports_submission_info,NA
+submission_animal_type,text,annual_reports_submission_info,NA
+report,text,annual_reports_submission_info,NA
+country,text,annual_reports_vaccine_manufacturers,NA
+country_iso3c,text,annual_reports_vaccine_manufacturers,NA
+report_year,double precision,annual_reports_vaccine_manufacturers,NA
+report_months,text,annual_reports_vaccine_manufacturers,NA
+report_semester,double precision,annual_reports_vaccine_manufacturers,NA
+vaccine_manufacturer,text,annual_reports_vaccine_manufacturers,NA
+vaccine_contact,text,annual_reports_vaccine_manufacturers,NA
+year_start_vaccine_activity,text,annual_reports_vaccine_manufacturers,NA
+year_cessation_vaccine_activity,text,annual_reports_vaccine_manufacturers,NA
+report,text,annual_reports_vaccine_manufacturers,NA
+country,text,annual_reports_vaccine_manufacturers_detail,NA
+country_iso3c,text,annual_reports_vaccine_manufacturers_detail,NA
+report_year,double precision,annual_reports_vaccine_manufacturers_detail,NA
+report_months,text,annual_reports_vaccine_manufacturers_detail,NA
+report_semester,double precision,annual_reports_vaccine_manufacturers_detail,NA
+disease,text,annual_reports_vaccine_manufacturers_detail,NA
+vaccine_manufacturer,text,annual_reports_vaccine_manufacturers_detail,NA
+vaccine,text,annual_reports_vaccine_manufacturers_detail,NA
+vaccine_type,text,annual_reports_vaccine_manufacturers_detail,NA
+year_start_vaccine_production_detail,text,annual_reports_vaccine_manufacturers_detail,NA
+year_end_vaccine_production_detail,text,annual_reports_vaccine_manufacturers_detail,NA
+report,text,annual_reports_vaccine_manufacturers_detail,NA
+country,text,annual_reports_vaccine_production,NA
+country_iso3c,text,annual_reports_vaccine_production,NA
+report_year,double precision,annual_reports_vaccine_production,NA
+report_months,text,annual_reports_vaccine_production,NA
+report_semester,double precision,annual_reports_vaccine_production,NA
+vaccine_manufacturer,text,annual_reports_vaccine_production,NA
+vaccine,text,annual_reports_vaccine_production,NA
+doses_produced,double precision,annual_reports_vaccine_production,NA
+doses_exported,double precision,annual_reports_vaccine_production,NA
+report,text,annual_reports_vaccine_production,NA
+country,text,annual_reports_veterinarians,NA
+country_iso3c,text,annual_reports_veterinarians,NA
+report_year,double precision,annual_reports_veterinarians,NA
+report_months,text,annual_reports_veterinarians,NA
+report_semester,double precision,annual_reports_veterinarians,NA
+veterinarian_field,text,annual_reports_veterinarians,NA
+public_sector_count,text,annual_reports_veterinarians,NA
+total_count,text,annual_reports_veterinarians,NA
+private_sector_count,text,annual_reports_veterinarians,NA
+veterinarian_class,text,annual_reports_veterinarians,NA
+report,text,annual_reports_veterinarians,NA
+item_code,double precision,connect_fao_lookup,NA
+item,text,connect_fao_lookup,NA
+product_code,text,connect_ots_lookup,NA
+product_fullname_english,text,connect_ots_lookup,NA
+country_origin,text,connect_static_vars,NA
+country_destination,text,connect_static_vars,NA
+shared_border,text,connect_static_vars,NA
+gc_dist,text,connect_static_vars,NA
+n_migratory_birds,text,connect_static_vars,NA
+n_migratory_wildlife,text,connect_static_vars,NA
+country_origin,text,connect_yearly_vars,NA
+country_destination,text,connect_yearly_vars,NA
+year,text,connect_yearly_vars,NA
+n_human_migrants,text,connect_yearly_vars,NA
+n_tourists,text,connect_yearly_vars,NA
+livestock_heads_1096,text,connect_yearly_vars,FAO - heads of Horses
+livestock_heads_1126,text,connect_yearly_vars,FAO - heads of Camels
+livestock_heads_866,text,connect_yearly_vars,FAO - heads of Cattle
+livestock_heads_1016,text,connect_yearly_vars,FAO - heads of Goats
+livestock_heads_976,text,connect_yearly_vars,FAO - heads of Sheep
+livestock_heads_1057,text,connect_yearly_vars,FAO - heads of Chickens
+livestock_heads_1107,text,connect_yearly_vars,FAO - heads of Asses
+livestock_heads_1171,text,connect_yearly_vars,FAO - heads of Animals live nes
+livestock_heads_1068,text,connect_yearly_vars,FAO - heads of Ducks
+livestock_heads_1079,text,connect_yearly_vars,FAO - heads of Turkeys
+livestock_heads_1110,text,connect_yearly_vars,FAO - heads of Mules
+livestock_heads_1034,text,connect_yearly_vars,FAO - heads of Pigs
+livestock_heads_1140,text,connect_yearly_vars,FAO - heads of Rabbits and hares
+livestock_heads_1157,text,connect_yearly_vars,"FAO - heads of Camelids, other"
+livestock_heads_1083,text,connect_yearly_vars,"FAO - heads of Pigeons, other birds"
+livestock_heads_946,text,connect_yearly_vars,FAO - heads of Buffaloes
+livestock_heads_1150,text,connect_yearly_vars,"FAO - heads of Rodents, other"
+trade_dollars_0101,text,connect_yearly_vars,"OTS - heads of Horses, asses, mules and hinnies; live"
+trade_dollars_0102,text,connect_yearly_vars,OTS - heads of Bovine animals; live
+trade_dollars_0103,text,connect_yearly_vars,OTS - heads of Swine; live
+trade_dollars_0105,text,connect_yearly_vars,"OTS - heads of Poultry; live, fowls of the species Gallus domesticus, ducks, geese, turkeys and guinea fowls"
+trade_dollars_0106,text,connect_yearly_vars,"OTS - heads of Animals, n.e.c. in chapter 01; live"
+trade_dollars_0201,text,connect_yearly_vars,OTS - heads of Meat of bovine animals; fresh or chilled
+trade_dollars_0202,text,connect_yearly_vars,OTS - heads of Meat of bovine animals; frozen
+trade_dollars_0203,text,connect_yearly_vars,"OTS - heads of Meat of swine; fresh, chilled or frozen"
+trade_dollars_0204,text,connect_yearly_vars,"OTS - heads of Meat of sheep or goats; fresh, chilled or frozen"
+trade_dollars_0206,text,connect_yearly_vars,"OTS - heads of Edible offal of bovine animals, swine, sheep, goats, horses, asses, mules or hinnies; fresh, chilled or frozen"
+trade_dollars_0207,text,connect_yearly_vars,"OTS - heads of Meat and edible offal of poultry; of the poultry of heading no. 0105, (i.e. fowls of the species Gallus domesticus), fresh, chilled or frozen"
+trade_dollars_0208,text,connect_yearly_vars,"OTS - heads of Meat and edible meat offal, n.e.c. in chapter 2; fresh, chilled or frozen"
+trade_dollars_0210,text,connect_yearly_vars,"OTS - heads of Meat and edible meat offal; salted, in brine, dried or smoked; edible flours and meals of meat or meat offal"
+trade_dollars_0302,text,connect_yearly_vars,OTS - heads of Fish; fresh or chilled (excluding fish fillets and other fish meat of heading no. 0304)
+trade_dollars_0303,text,connect_yearly_vars,OTS - heads of Fish; frozen (excluding fish fillets and other fish meat of heading no. 0304)
+trade_dollars_0304,text,connect_yearly_vars,"OTS - heads of Fish fillets and other fish meat (whether or not minced); fresh, chilled or frozen"
+trade_dollars_0305,text,connect_yearly_vars,"OTS - heads of Fish; dried, salted or in brine, smoked fish, whether or not cooked before or during the smoking process, fish meal fit for human consumption"
+trade_dollars_0306,text,connect_yearly_vars,"OTS - heads of Crustaceans, in shell or not, live, fresh, chilled, frozen, dried, salted or in brine; crustaceans, in shell, cooked by steaming or boiling in water, chilled or not, frozen, dried, salted or in brine"
+trade_dollars_0307,text,connect_yearly_vars,"OTS - heads of Molluscs, whether in shell or not, live, fresh, chilled, frozen, dried, salted in brine; aquatic invertebrates (not crustaceans and molluscs) live, fresh, chilled, frozen, dried, salted or in brine"
+trade_dollars_0401,text,connect_yearly_vars,OTS - heads of Milk and cream; not concentrated nor containing added sugar or other sweetening matter
+trade_dollars_0402,text,connect_yearly_vars,OTS - heads of Milk and cream; concentrated or containing added sugar or other sweetening matter
+trade_dollars_0403,text,connect_yearly_vars,"OTS - heads of Buttermilk, curdled milk and cream, yoghurt, kephir, fermented or acidified milk or cream, whether or not concentrated, containing added sugar, sweetening matter, flavoured or added fruit or cocoa"
+trade_dollars_0404,text,connect_yearly_vars,"OTS - heads of Whey and products consisting of natural milk constituents; whether or not containing added sugar or other sweetening matter, not elsewhere specified or included"
+trade_dollars_0405,text,connect_yearly_vars,OTS - heads of Butter and other fats and oils derived from milk; dairy spreads
+trade_dollars_0406,text,connect_yearly_vars,OTS - heads of Cheese and curd
+trade_dollars_0407,text,connect_yearly_vars,"OTS - heads of Birds' eggs, in shell; fresh, preserved or cooked"
+trade_dollars_0408,text,connect_yearly_vars,"OTS - heads of Birds' eggs, not in shell; egg yolks, fresh, dried, cooked by steaming or boiling in water, moulded, frozen or otherwise preserved, whether or not containing added sugar or other sweetening matter"
+trade_dollars_0409,text,connect_yearly_vars,OTS - heads of Honey; natural
+trade_dollars_0511,text,connect_yearly_vars,"OTS - heads of Animal products not elsewhere specified or included; dead animals of chapter 1 or 3, unfit for human consumption"
+trade_dollars_0601,text,connect_yearly_vars,"OTS - heads of Bulbs, tubers, tuberous roots, corms, crowns and rhizomes; dormant, in growth or in flower; chicory plants and roots other than roots of heading no. 1212"
+trade_dollars_0602,text,connect_yearly_vars,"OTS - heads of Plants, live; n.e.c. in heading no. 0601, (including their roots) cuttings and slips; mushroom spawn"
+trade_dollars_0604,text,connect_yearly_vars,"OTS - heads of Foliage, branches and other parts of plants, without flowers or flower buds, and grasses, mosses and lichens; suitable for bouquets or for ornamental purposes, fresh, dried, dyed, bleached, impregnated etc."
+trade_dollars_0709,text,connect_yearly_vars,"OTS - heads of Vegetables, n.e.c. in chapter 07; fresh or chilled"
+trade_dollars_0710,text,connect_yearly_vars,OTS - heads of Vegetables (uncooked or cooked by steaming or boiling in water); frozen
+trade_dollars_0712,text,connect_yearly_vars,"OTS - heads of Vegetables, dried; whole, cut, sliced, broken or in powder, but not further prepared"
+trade_dollars_0713,text,connect_yearly_vars,"OTS - heads of Vegetables, dried leguminous; shelled, whether or not skinned or split"
+trade_dollars_0801,text,connect_yearly_vars,"OTS - heads of Nuts, edible; coconuts, Brazil nuts and cashew nuts, fresh or dried, whether or not shelled or peeled"
+trade_dollars_0802,text,connect_yearly_vars,"OTS - heads of Nuts (excluding coconuts, Brazils and cashew nuts); fresh or dried, whether or not shelled or peeled"
+trade_dollars_0805,text,connect_yearly_vars,OTS - heads of Citrus fruit; fresh or dried
+trade_dollars_0806,text,connect_yearly_vars,OTS - heads of Grapes; fresh or dried
+trade_dollars_0808,text,connect_yearly_vars,"OTS - heads of Apples, pears and quinces; fresh"
+trade_dollars_0809,text,connect_yearly_vars,"OTS - heads of Apricots, cherries, peaches (including nectarines), plums and sloes, fresh"
+trade_dollars_0811,text,connect_yearly_vars,"OTS - heads of Fruit and nuts; uncooked or cooked by steaming or boiling in water, frozen, whether or not containing added sugar or other sweetening matter"
+trade_dollars_0813,text,connect_yearly_vars,"OTS - heads of Fruit, dried, other than that of heading no. 0801 to 0806; mixtures of nuts or dried fruits of this chapter"
+trade_dollars_0901,text,connect_yearly_vars,"OTS - heads of Coffee, whether or not roasted or decaffeinated; husks and skins; coffee substitutes containing coffee in any proportion"
+trade_dollars_0902,text,connect_yearly_vars,OTS - heads of Tea
+trade_dollars_0903,text,connect_yearly_vars,OTS - heads of Mate
+trade_dollars_0904,text,connect_yearly_vars,OTS - heads of Pepper of the genus piper; dried or crushed or ground fruits of the genus capsicum or of the genus pimenta
+trade_dollars_0908,text,connect_yearly_vars,"OTS - heads of Nutmeg, mace and cardamoms"
+trade_dollars_1001,text,connect_yearly_vars,OTS - heads of Wheat and meslin
+trade_dollars_1005,text,connect_yearly_vars,OTS - heads of Maize (corn)
+trade_dollars_1006,text,connect_yearly_vars,OTS - heads of Rice
+trade_dollars_1008,text,connect_yearly_vars,"OTS - heads of Buckwheat, millet and canary seed; other cereals"
+trade_dollars_1101,text,connect_yearly_vars,OTS - heads of Wheat or meslin flour
+trade_dollars_1103,text,connect_yearly_vars,OTS - heads of Cereal groats; meal and pellets
+trade_dollars_1104,text,connect_yearly_vars,"OTS - heads of Cereal grains otherwise worked (egg hulled, rolled, flaked, pearled, sliced or kibbled) except rice of heading no. 1006; germ of cereals whole, rolled, flaked or ground"
+trade_dollars_1201,text,connect_yearly_vars,OTS - heads of Soya beans; whether or not broken
+trade_dollars_1202,text,connect_yearly_vars,"OTS - heads of Ground-nuts; not roasted or otherwise cooked, whether or not shelled or broken"
+trade_dollars_1207,text,connect_yearly_vars,"OTS - heads of Oil seeds and oleaginous fruits, n.e.c. in chapter 12; whether or not broken"
+trade_dollars_1208,text,connect_yearly_vars,OTS - heads of Flours and meals of oil seeds or oleaginous fruits; other than those of mustard
+trade_dollars_1209,text,connect_yearly_vars,"OTS - heads of Seeds, fruit and spores; of a kind used for sowing"
+trade_dollars_1211,text,connect_yearly_vars,"OTS - heads of Plants and parts of plants (including seeds and fruits), used primarily in perfumery, pharmacy; for insecticidal, fungicidal or similar purposes, fresh or dried, whether or not crushed or powdered"
+trade_dollars_1212,text,connect_yearly_vars,"OTS - heads of Locust beans, seaweeds and other algae, sugar beet, sugar cane, fresh, chilled, frozen or dried, whether or not ground; fruit stones, kernels and other vegetable products (including unroasted chicory roots) used primarily for human consumption, n.e.c."
+trade_dollars_1301,text,connect_yearly_vars,"OTS - heads of Lac; natural gums, resins, gum-resins and oleoresins (for example, balsams)"
+trade_dollars_1302,text,connect_yearly_vars,"OTS - heads of Vegetable saps and extracts; pectic substances, pectinates and pectates; agar-agar and other mucilages and thickeners, whether or not modified, derived from vegetable products"
+trade_dollars_1501,text,connect_yearly_vars,"OTS - heads of Pig fat (including lard) and poultry fat, other than that of heading no. 0209 or 1503"
+trade_dollars_1504,text,connect_yearly_vars,"OTS - heads of Fats and oils and their fractions of fish or marine mammals; whether or not refined, but not chemically modified"
+trade_dollars_1506,text,connect_yearly_vars,"OTS - heads of Animal fats and oils and their fractions; whether or not refined, but not chemically modified, n.e.c. in chapter 15"
+trade_dollars_1507,text,connect_yearly_vars,"OTS - heads of Soya-bean oil and its fractions; whether or not refined, but not chemically modified"
+trade_dollars_1508,text,connect_yearly_vars,"OTS - heads of Ground nut oil and its fractions; whether or not refined, but not chemically modified"
+trade_dollars_1509,text,connect_yearly_vars,"OTS - heads of Olive oil and its fractions; whether or not refined, but not chemically modified"
+trade_dollars_1512,text,connect_yearly_vars,"OTS - heads of Sun-flower seed, safflower or cotton-seed oil and their fractions; whether or not refined, but not chemically modified"
+trade_dollars_1513,text,connect_yearly_vars,"OTS - heads of Coconut (copra), palm kernel or babassu oil and their fractions; whether or not refined but not chemically modified"
+trade_dollars_1515,text,connect_yearly_vars,"OTS - heads of Fixed vegetable fats and oils (including jojoba oil) and their fractions, whether or not refined; but not chemically modified"
+trade_dollars_1516,text,connect_yearly_vars,"OTS - heads of Animal or vegetable fats and oils and their fractions; partly or wholly hydrogenated, inter-esterified, re-esterified or elaidinised, whether or not refined, but not further prepared"
+trade_dollars_1517,text,connect_yearly_vars,"OTS - heads of Margarine; edible mixtures or preparations of animal or vegetable fats or oils or of fractions of different fats or oils of this chapter, other than edible fats or oils of heading no. 1516"
+trade_dollars_1518,text,connect_yearly_vars,"OTS - heads of Animal or vegetable fats, oils, fractions, modified in any way, excluding heading no. 1516; inedible versions of animal or vegetable fats, oils or fractions of this chapter, n.e.c. or included"
+trade_dollars_1601,text,connect_yearly_vars,"OTS - heads of Sausages and similar products of meat, meat offal or blood; food preparations based on these products"
+trade_dollars_1602,text,connect_yearly_vars,"OTS - heads of Prepared or preserved meat, meat offal or blood"
+trade_dollars_1604,text,connect_yearly_vars,OTS - heads of Prepared or preserved fish; caviar and caviar substitutes prepared from fish eggs
+trade_dollars_1605,text,connect_yearly_vars,"OTS - heads of Crustaceans, molluscs and other aquatic invertebrates, prepared or preserved"
+trade_dollars_1701,text,connect_yearly_vars,"OTS - heads of Cane or beet sugar and chemically pure sucrose, in solid form"
+trade_dollars_1702,text,connect_yearly_vars,"OTS - heads of Sugars, including lactose, maltose, glucose or fructose in solid form; sugar syrups without added flavouring or colouring matter; artificial honey, whether or not mixed with natural honey; caramel"
+trade_dollars_1704,text,connect_yearly_vars,"OTS - heads of Sugar confectionery (including white chocolate), not containing cocoa"
+trade_dollars_1805,text,connect_yearly_vars,"OTS - heads of Cocoa; powder, not containing added sugar or other sweetening matter"
+trade_dollars_1806,text,connect_yearly_vars,OTS - heads of Chocolate and other food preparations containing cocoa
+trade_dollars_1901,text,connect_yearly_vars,"OTS - heads of Malt extract; flour/groats/meal/starch/malt extract products, no cocoa (or less than 40% by weight) and food preparations of goods of headings 04.01 to 04.04, no cocoa (or less than 5% by weight), weights calculated on a totally defatted basis, n.e.c."
+trade_dollars_1902,text,connect_yearly_vars,"OTS - heads of Pasta; whether or not cooked or stuffed with meat or other substance, or otherwise prepared, egg spaghetti, macaroni, noodles, lasagne, gnocchi, ravioli, cannelloni; couscous, whether or not prepared"
+trade_dollars_1903,text,connect_yearly_vars,"OTS - heads of Tapioca and substitutes therefor prepared from starch; in the form of flakes, grains, pearls, siftings or similar forms"
+trade_dollars_1904,text,connect_yearly_vars,"OTS - heads of Prepared foods obtained by swelling or roasting cereals or cereal products (egg corn flakes); cereals (other than maize (corn)) in grain form or in the form of flakes or other worked grains (not flour and meal), pre-cooked or otherwise prepared, n.e.c."
+trade_dollars_1905,text,connect_yearly_vars,"OTS - heads of Bread, pastry, cakes, biscuits, other bakers' wares, whether or not containing cocoa; communion wafers, empty cachets suitable for pharmaceutical use, sealing wafers, rice paper and similar products"
+trade_dollars_2001,text,connect_yearly_vars,"OTS - heads of Vegetables, fruit, nuts and other edible parts of plants; prepared or preserved by vinegar or acetic acid"
+trade_dollars_2002,text,connect_yearly_vars,OTS - heads of Tomatoes; prepared or preserved otherwise than by vinegar or acetic acid
+trade_dollars_2004,text,connect_yearly_vars,"OTS - heads of Vegetables preparations n.e.c.; prepared or preserved otherwise than by vinegar or acetic acid, frozen, other than products of heading no. 2006"
+trade_dollars_2005,text,connect_yearly_vars,"OTS - heads of Vegetables preparations n.e.c.; prepared or preserved otherwise than by vinegar or acetic acid, not frozen, other than products of heading no. 2006"
+trade_dollars_2006,text,connect_yearly_vars,"OTS - heads of Vegetables, fruit, nuts, fruit-peel and other parts of plants, preserved by sugar (drained, glace or crystallised)"
+trade_dollars_2007,text,connect_yearly_vars,"OTS - heads of Jams, fruit jellies, marmalades, fruit or nut puree and fruit or nut pastes, being cooked preparations; whether or not containing added sugar or other sweetening matter"
+trade_dollars_2008,text,connect_yearly_vars,"OTS - heads of Fruit, nuts and other edible parts of plants; prepared or preserved in ways n.e.c., whether or not containing added sugar or other sweetening matter or spirit, not elsewhere specified or included"
+trade_dollars_2009,text,connect_yearly_vars,"OTS - heads of Fruit juices (including grape must) and vegetable juices, unfermented, not containing added spirit; whether or not containing added sugar or other sweetening matter"
+trade_dollars_2101,text,connect_yearly_vars,"OTS - heads of Extracts, essences, concentrates of coffee, tea or mate; preparations with a basis of these products or with a basis of coffee, tea or mate; roasted chicory and other roasted coffee substitutes and extracts, essences and concentrates thereof"
+trade_dollars_2102,text,connect_yearly_vars,"OTS - heads of Yeasts (active or inactive); other single-cell micro-organisms, dead (but not including vaccines of heading no. 3002); prepared baking powders"
+trade_dollars_2103,text,connect_yearly_vars,"OTS - heads of Sauces and preparations therefor; mixed condiments and mixed seasonings, mustard flour and meal and prepared mustard"
+trade_dollars_2104,text,connect_yearly_vars,OTS - heads of Soups and broths and preparations therefor; homogenised composite food preparations
+trade_dollars_2105,text,connect_yearly_vars,OTS - heads of Ice cream and other edible ice; whether or not containing cocoa
+trade_dollars_2106,text,connect_yearly_vars,OTS - heads of Food preparations not elsewhere specified or included
+trade_dollars_2201,text,connect_yearly_vars,"OTS - heads of Waters, including natural or artificial mineral waters and aerated waters, not containing added sugar or other sweetening matter nor flavoured; ice and snow"
+trade_dollars_2202,text,connect_yearly_vars,"OTS - heads of Waters, including mineral and aerated waters, containing added sugar or sweetening matter, flavoured; other non-alcoholic beverages, not including fruit or vegetable juices of heading no. 2009"
+trade_dollars_2207,text,connect_yearly_vars,"OTS - heads of Ethyl alcohol, undenatured; of an alcoholic strength by volume of 80% vol. or higher; ethyl alcohol and other spirits, denatured, of any strength"
+trade_dollars_2208,text,connect_yearly_vars,"OTS - heads of Ethyl alcohol, undenatured; of an alcoholic strength by volume of less than 80% volume; spirits, liqueurs and other spirituous beverages"
+trade_dollars_2209,text,connect_yearly_vars,OTS - heads of Vinegar and substitutes for vinegar obtained from acetic acid
+trade_dollars_2301,text,connect_yearly_vars,"OTS - heads of Flours, meal and pellets, of meat or meat offal, of fish or of crustaceans, molluscs or other aquatic invertebrates, unfit for human consumption; greaves"
+trade_dollars_2302,text,connect_yearly_vars,"OTS - heads of Bran, sharps and other residues; whether or not in the form of pellets derived from the sifting, milling or other working of cereals or of leguminous plants"
+trade_dollars_2304,text,connect_yearly_vars,"OTS - heads of Oil-cake and other solid residues; whether or not ground or in the form of pellets, resulting from the extraction of soya-bean oil"
+trade_dollars_2305,text,connect_yearly_vars,"OTS - heads of Oil-cake and other solid residues; whether or not ground or in the form of pellets, resulting from the extraction of ground-nut oil"
+trade_dollars_2309,text,connect_yearly_vars,OTS - heads of Preparations of a kind used in animal feeding
+trade_dollars_2401,text,connect_yearly_vars,"OTS - heads of Tobacco, unmanufactured; tobacco refuse"
+trade_dollars_2402,text,connect_yearly_vars,"OTS - heads of Cigars, cheroots, cigarillos and cigarettes; of tobacco or of tobacco substitutes"
+trade_dollars_2403,text,connect_yearly_vars,"OTS - heads of Manufactured tobacco and manufactured tobacco substitutes; n.e.c., homogenised or reconstituted tobacco; tobacco extracts, essences"
+trade_dollars_4102,text,connect_yearly_vars,"OTS - heads of Raw skins of sheep or lambs (fresh, salted, dried, limed, pickled or otherwise preserved, but not further prepared), whether or not with wool on or split"
+trade_dollars_4104,text,connect_yearly_vars,"OTS - heads of Tanned or crust hides and skins of bovine (including buffalo) or equine animals, without hair on, whether or not split, but not further prepared"
+trade_dollars_4106,text,connect_yearly_vars,"OTS - heads of Tanned or crust hides and skins of other animals, without wool or hair on, whether or not split, but not further prepared"
+trade_dollars_4107,text,connect_yearly_vars,"OTS - heads of Leather further prepared after tanning or crusting, including parchment-dressed leather, of bovine (including buffalo) or equine animals, without hair on, whether or not split, other than leather of heading 41.14"
+trade_dollars_4201,text,connect_yearly_vars,"OTS - heads of Saddlery and harness for any animal (including traces, leads, knee pads, muzzles, saddle cloths, saddle bags, dog coats and the like) of any material"
+trade_dollars_4202,text,connect_yearly_vars,"OTS - heads of Trunks; suit, camera, jewellery, cutlery cases; travel, tool, similar bags; wholly or mainly covered by leather, composition leather, plastic sheeting, textile materials, vulcanised fibre, paperboard"
+trade_dollars_4203,text,connect_yearly_vars,"OTS - heads of Articles of apparel and clothing accessories, of leather or of composition leather"
+trade_dollars_4205,text,connect_yearly_vars,OTS - heads of Leather or composition leather articles n.e.c. in chapter 42
+trade_dollars_4206,text,connect_yearly_vars,"OTS - heads of Articles of gut (other than silk-worm gut), of goldbeater's skin, of bladders or of tendons"
+trade_dollars_4302,text,connect_yearly_vars,"OTS - heads of Tanned or dressed furskins (including heads, tails, paws, other pieces, cuttings), unassembled, or assembled (without addition of other materials), excluding those of heading no. 4303"
+trade_dollars_4303,text,connect_yearly_vars,"OTS - heads of Articles of apparel, clothing accessories and other articles of furskin"
+trade_dollars_4304,text,connect_yearly_vars,OTS - heads of Artificial fur and articles thereof
+trade_dollars_0209,text,connect_yearly_vars,"OTS - heads of Pig fat, free of lean meat, and poultry fat, (not rendered or otherwise extracted), fresh, chilled, frozen, salted, in brine, dried or smoked"
+trade_dollars_0301,text,connect_yearly_vars,OTS - heads of Fish; live
+trade_dollars_0410,text,connect_yearly_vars,OTS - heads of Edible products of animal origin; not elsewhere specified or included
+trade_dollars_0501,text,connect_yearly_vars,"OTS - heads of Human hair; unworked, whether or not washed or scoured; waste of human hair"
+trade_dollars_0502,text,connect_yearly_vars,"OTS - heads of Pigs', hogs' or boars' bristles and hair; and waste thereof"
+trade_dollars_0504,text,connect_yearly_vars,"OTS - heads of Guts, bladders and stomachs of animals (other than fish); whole and pieces thereof, fresh, chilled, frozen, salted, in brine, dried or smoked"
+trade_dollars_0507,text,connect_yearly_vars,"OTS - heads of Ivory, tortoise-shell, whalebone and whalebone hair, horns, antlers, hooves, nails, claws and beaks unworked or simply prepared, not cut to shape; waste and powder of these products"
+trade_dollars_0603,text,connect_yearly_vars,"OTS - heads of Flowers; cut flowers and flower buds of a kind suitable for bouquets or for ornamental purposes, fresh, dried, dyed, bleached, impregnated or otherwise prepared"
+trade_dollars_0701,text,connect_yearly_vars,OTS - heads of Potatoes; fresh or chilled
+trade_dollars_0702,text,connect_yearly_vars,OTS - heads of Tomatoes; fresh or chilled
+trade_dollars_0703,text,connect_yearly_vars,"OTS - heads of Onions, shallots, garlic, leeks and other alliaceous vegetables; fresh or chilled"
+trade_dollars_0704,text,connect_yearly_vars,"OTS - heads of Cabbages, cauliflowers, kohlrabi, kale and similar edible brassicas; fresh or chilled"
+trade_dollars_0705,text,connect_yearly_vars,OTS - heads of Lettuce (lactuca sativa) and chicory (cichorium spp.) fresh or chilled
+trade_dollars_0706,text,connect_yearly_vars,"OTS - heads of Carrots, turnips, salad beetroot, salsify, celeriac, radishes and similar edible roots; fresh or chilled"
+trade_dollars_0707,text,connect_yearly_vars,OTS - heads of Cucumbers and gherkins; fresh or chilled
+trade_dollars_0708,text,connect_yearly_vars,"OTS - heads of Leguminous vegetables; shelled or unshelled, fresh or chilled"
+trade_dollars_0711,text,connect_yearly_vars,"OTS - heads of Vegetables provisionally preserved; (egg by sulphur dioxide gas, in brine, in sulphur water or in other preservative solutions), but unsuitable in that state for immediate consumption"
+trade_dollars_0714,text,connect_yearly_vars,"OTS - heads of Manioc, arrowroot, salep, Jerusalem artichokes, sweet potatoes and similar roots and tubers with high starch or inulin content; fresh, chilled, frozen or dried, whether or not sliced or in the form of pellets; sago pith"
+trade_dollars_0803,text,connect_yearly_vars,"OTS - heads of Bananas, including plantains; fresh or dried"
+trade_dollars_0804,text,connect_yearly_vars,"OTS - heads of Dates, figs, pineapples, avocados, guavas, mangoes and mangosteens; fresh or dried"
+trade_dollars_0807,text,connect_yearly_vars,OTS - heads of Melons (including watermelons) and papaws (papayas); fresh
+trade_dollars_0810,text,connect_yearly_vars,"OTS - heads of Fruit, fresh; n.e.c. in chapter 8"
+trade_dollars_0812,text,connect_yearly_vars,"OTS - heads of Fruit and nuts provisionally preserved; (egg by sulphur dioxide gas, brine, in sulphur water or in other preservative solutions), but unsuitable in that state for immediate consumption"
+trade_dollars_0814,text,connect_yearly_vars,"OTS - heads of Peel of citrus fruit or melons (including watermelons); fresh, frozen dried or provisionally preserved in brine, in sulphur water or in other preservative solutions"
+trade_dollars_0905,text,connect_yearly_vars,OTS - heads of Vanilla
+trade_dollars_0906,text,connect_yearly_vars,OTS - heads of Cinnamon and cinnamon-tree flowers
+trade_dollars_0907,text,connect_yearly_vars,"OTS - heads of Cloves; (whole fruit, cloves and stems)"
+trade_dollars_0909,text,connect_yearly_vars,"OTS - heads of Seeds of anise, badian, fennel, coriander, cumin, caraway or juniper"
+trade_dollars_0910,text,connect_yearly_vars,"OTS - heads of Ginger, saffron, tumeric (curcuma), thyme, bay leaves, curry and other spices"
+trade_dollars_1003,text,connect_yearly_vars,OTS - heads of Barley
+trade_dollars_1007,text,connect_yearly_vars,OTS - heads of Grain sorghum
+trade_dollars_1102,text,connect_yearly_vars,OTS - heads of Cereal flours; other than of wheat or meslin
+trade_dollars_1105,text,connect_yearly_vars,"OTS - heads of Flour, meal, powder, flakes, granules and pellets of potatoes"
+trade_dollars_1106,text,connect_yearly_vars,"OTS - heads of Flour, meal and powder; of the dried leguminous vegetables of heading no. 0713, of sago or of roots or tubers of heading no. 0714 or of the products of chapter 8"
+trade_dollars_1107,text,connect_yearly_vars,OTS - heads of Malt; whether or not roasted
+trade_dollars_1108,text,connect_yearly_vars,OTS - heads of Starches; inulin
+trade_dollars_1109,text,connect_yearly_vars,OTS - heads of Wheat gluten; whether or not dried
+trade_dollars_1204,text,connect_yearly_vars,"OTS - heads of Oil seeds; linseed, whether or not broken"
+trade_dollars_1206,text,connect_yearly_vars,OTS - heads of Sunflower seeds; whether or not broken
+trade_dollars_1210,text,connect_yearly_vars,"OTS - heads of Hop cones, fresh or dried, whether or not ground, powdered or in the form of pellets; lupulin"
+trade_dollars_1213,text,connect_yearly_vars,"OTS - heads of Cereal straw and husks, unprepared; whether or not chopped, ground, pressed or in the form of pellets"
+trade_dollars_1214,text,connect_yearly_vars,"OTS - heads of Swedes, mangolds, fodder roots, hay, lucerne (alfalfa), clover, sainfoin, forage kale, lupines, vetches and similar forage products, whether or not in the form of pellets"
+trade_dollars_1401,text,connect_yearly_vars,"OTS - heads of Vegetable materials of a kind used primarily for plaiting; (egg bamboos, rattans, reeds, rushes, osier, raffia, cleaned, bleached or dyed cereal straw and lime bark)"
+trade_dollars_1404,text,connect_yearly_vars,OTS - heads of Vegetable products not elsewhere specified or included
+trade_dollars_1503,text,connect_yearly_vars,"OTS - heads of Lard stearin, lard oil, oleostearin, oleo-oil and tallow oil; not emulsified or mixed or otherwise prepared"
+trade_dollars_1505,text,connect_yearly_vars,OTS - heads of Wool grease and fatty substances derived therefrom (including lanolin)
+trade_dollars_1510,text,connect_yearly_vars,"OTS - heads of Oils and their fractions n.e.c. in chapter 15, obtained solely from olives, whether or not refined, but not chemically modified, including blends of these oils or fractions with oils or fractions of heading no. 1509"
+trade_dollars_1511,text,connect_yearly_vars,"OTS - heads of Palm oil and its fractions; whether or not refined, but not chemically modified"
+trade_dollars_1514,text,connect_yearly_vars,"OTS - heads of Rape, colza or mustard oil and their fractions; whether or not refined, but not chemically modified"
+trade_dollars_1520,text,connect_yearly_vars,"OTS - heads of Glycerol, crude; glycerol waters and glycerol lyes"
+trade_dollars_1521,text,connect_yearly_vars,"OTS - heads of Vegetable waxes (other than triglycerides), beeswax, other insect waxes and spermaceti; whether or not refined or coloured"
+trade_dollars_1522,text,connect_yearly_vars,OTS - heads of Degras; residues resulting from the treatment of fatty substances or animal or vegetable waxes
+trade_dollars_1603,text,connect_yearly_vars,"OTS - heads of Extracts and juices of meat, fish or crustaceans, molluscs or other aquatic invertebrates"
+trade_dollars_1703,text,connect_yearly_vars,OTS - heads of Molasses; resulting from the extraction or refining of sugar
+trade_dollars_1801,text,connect_yearly_vars,"OTS - heads of Cocoa beans; whole or broken, raw or roasted"
+trade_dollars_1804,text,connect_yearly_vars,"OTS - heads of Cocoa; butter, fat and oil"
+trade_dollars_2003,text,connect_yearly_vars,"OTS - heads of Mushrooms and truffles, prepared or preserved other than by vinegar or acetic acid"
+trade_dollars_2203,text,connect_yearly_vars,OTS - heads of Beer made from malt
+trade_dollars_2204,text,connect_yearly_vars,"OTS - heads of Wine of fresh grapes, including fortified wines; grape must other than that of heading no. 2009"
+trade_dollars_2205,text,connect_yearly_vars,"OTS - heads of Vermouth and other wine of fresh grapes, flavoured with plants or aromatic substances"
+trade_dollars_2206,text,connect_yearly_vars,"OTS - heads of Fermented beverages, n.e.c. in chapter 22; (egg cider, perry, mead)"
+trade_dollars_2303,text,connect_yearly_vars,"OTS - heads of Residues of starch manufacture, similar residues; beet-pulp, bagasse and other waste of sugar manufacture, brewing or distilling dregs and waste, whether or not in the form of pellets"
+trade_dollars_2306,text,connect_yearly_vars,"OTS - heads of Oil-cake and other solid residues; whether or not ground or in the form of pellets, resulting from the extraction of vegetable fats or oils other than those of heading no. 2304 or 2305"
+trade_dollars_2308,text,connect_yearly_vars,"OTS - heads of Vegetable materials and vegetable waste, vegetable residues and bi-products; whether or not in the form of pellets, of a kind used in animal feeding, not elsewhere specified or included"
+trade_dollars_4101,text,connect_yearly_vars,"OTS - heads of Raw hides and skins of bovine (including buffalo) or equine animals (fresh, salted, dried, limed, pickled, otherwise preserved but not tanned, parchment dressed or further prepared), whether or not dehaired or split"
+trade_dollars_4112,text,connect_yearly_vars,"OTS - heads of Leather further prepared after tanning or crusting, including parchment dressed leather, of sheep or lamb, without wool on, whether or not split, other than leather of heading 41.14"
+trade_dollars_4114,text,connect_yearly_vars,OTS - heads of Chamois (including combination chamois) leather; patent leather and patent laminated leather; metallised leather
+trade_dollars_0104,text,connect_yearly_vars,OTS - heads of Sheep and goats; live
+trade_dollars_0506,text,connect_yearly_vars,"OTS - heads of Bones and horn-cores, unworked, defatted, simply prepared (but not cut to shape), treated with acid or degelatinised; powder and waste of these products"
+trade_dollars_0508,text,connect_yearly_vars,"OTS - heads of Coral and similar materials, unworked or simply prepared, shells of molluscs, crustaceans or echinoderms and cuttle-bone, not cut to shape powder and waste thereof"
+trade_dollars_2307,text,connect_yearly_vars,OTS - heads of Wine lees; argol
+trade_dollars_4113,text,connect_yearly_vars,"OTS - heads of Leather further prepared after tanning or crusting, including parchment-dressed leather, of animals (other than ovine), without wool or hair on, whether or not split, other than leather of heading 41.14"
+trade_dollars_0205,text,connect_yearly_vars,"OTS - heads of Meat of horses, asses, mules or hinnies; fresh, chilled or frozen"
+trade_dollars_1004,text,connect_yearly_vars,OTS - heads of Oats
+trade_dollars_1502,text,connect_yearly_vars,"OTS - heads of Fats of bovine animals, sheep or goats; other than those of heading no. 1503"
+trade_dollars_4115,text,connect_yearly_vars,"OTS - heads of Composition leather with a basis of leather or leather fibre, in slabs, sheets or strip, in rolls or not; parings and other waste of leather or of composition leather, not suitable for the manufacture of leather articles; leather dust, powder and flour"
+trade_dollars_0505,text,connect_yearly_vars,"OTS - heads of Skins and other parts of birds with feathers, down; feathers, down and parts thereof; not further worked than cleaned, disinfected, treated for preservation; powder, waste and parts of feathers"
+trade_dollars_1205,text,connect_yearly_vars,OTS - heads of Rape or colza seeds; whether or not broken
+trade_dollars_1802,text,connect_yearly_vars,"OTS - heads of Cocoa; shells, husks, skins and other cocoa waste"
+trade_dollars_1803,text,connect_yearly_vars,OTS - heads of Cocoa; paste; whether or not defatted
+trade_dollars_4103,text,connect_yearly_vars,"OTS - heads of Raw hides and skins n.e.c in headings no. 4101, 4102; fresh, salted, dried, pickled or otherwise preserved, not further prepared, whether or not dehaired or split"
+trade_dollars_0510,text,connect_yearly_vars,"OTS - heads of Ambergris, castoreum, civet and musk; cantharides; bile, dried or not glands, other animal products used in preparation of pharmaceutical products, fresh chilled, frozen or otherwise provisionally preserved"
+trade_dollars_1002,text,connect_yearly_vars,OTS - heads of Rye
+trade_dollars_1203,text,connect_yearly_vars,OTS - heads of Copra
+trade_dollars_4105,text,connect_yearly_vars,"OTS - heads of Tanned or crust skins of sheep and lambs, without wool on, whether or not split, but not further prepared"
+trade_dollars_4301,text,connect_yearly_vars,"OTS - heads of Raw furskins (including heads, tails, paws, other pieces or cuttings, suitable for furriers' use), excluding raw hides and skins of heading no. 4101, 4102 or 4103"
+country_iso3c,text,country_gdp,NA
+year,integer,country_gdp,NA
+gdp_dollars,double precision,country_gdp,NA
+country_iso3c,text,country_taxa_population,NA
+year,double precision,country_taxa_population,NA
+taxa,text,country_taxa_population,NA
+population,double precision,country_taxa_population,NA
+disease,text,outbreak_reports_diseases_unmatched,NA
+table,text,outbreak_reports_diseases_unmatched,NA
+report_id,text,outbreak_reports_events,NA
+url_report_id,integer,outbreak_reports_events,NA
+outbreak_thread_id,text,outbreak_reports_events,NA
+url_outbreak_thread_id,integer,outbreak_reports_events,NA
+country,text,outbreak_reports_events,NA
+country_iso3c,text,outbreak_reports_events,NA
+disease_category,text,outbreak_reports_events,NA
+disease,text,outbreak_reports_events,NA
+is_aquatic,boolean,outbreak_reports_events,NA
+report_date,timestamp with time zone,outbreak_reports_events,NA
+report_type,text,outbreak_reports_events,NA
+reason_for_notification,text,outbreak_reports_events,NA
+date_of_confirmation_of_the_event,timestamp with time zone,outbreak_reports_events,NA
+date_of_start_of_the_event,timestamp with time zone,outbreak_reports_events,NA
+date_event_resolved,timestamp with time zone,outbreak_reports_events,NA
+date_of_previous_occurrence,timestamp with time zone,outbreak_reports_events,NA
+casual_agent,text,outbreak_reports_events,NA
+serotype,text,outbreak_reports_events,NA
+future_reporting,text,outbreak_reports_events,NA
+sender_full_name,text,outbreak_reports_events,NA
+sender_address,text,outbreak_reports_events,NA
+sender_job_position,text,outbreak_reports_events,NA
+sender_email,text,outbreak_reports_events,NA
+username,text,outbreak_reports_events,NA
+sender_country_territory,text,outbreak_reports_events,NA
+sender_first_name,text,outbreak_reports_events,NA
+sender_last_name,text,outbreak_reports_events,NA
+sender_title,text,outbreak_reports_events,NA
+country_or_zone,text,outbreak_reports_events,NA
+reason,text,outbreak_reports_events,NA
+is_for_country,boolean,outbreak_reports_events,NA
+report_status,text,outbreak_reports_events,NA
+event_status,text,outbreak_reports_events,NA
+self_declaration,boolean,outbreak_reports_events,NA
+sender_telephone,text,outbreak_reports_events,NA
+report_desc,text,outbreak_reports_events,NA
+description,text,outbreak_reports_events,NA
+send_path,text,outbreak_reports_events,NA
+reference,text,outbreak_reports_events,NA
+follow_up_count,text,outbreak_reports_events,NA
+is_final_report,boolean,outbreak_reports_events,NA
+is_endemic,boolean,outbreak_reports_events,NA
+ando_id,text,outbreak_reports_events,NA
+disease_class,text,outbreak_reports_events,NA
+no_evolution_reason,text,outbreak_reports_events,NA
+report_info_id,integer,outbreak_reports_ingest_status_log,NA
+ingest_error,boolean,outbreak_reports_ingest_status_log,NA
+outbreak_location_id,text,outbreak_reports_outbreaks,NA
+outbreak_start_date,timestamp with time zone,outbreak_reports_outbreaks,NA
+first_adm_division,text,outbreak_reports_outbreaks,NA
+strain,text,outbreak_reports_outbreaks,NA
+outbreak_end_date,timestamp with time zone,outbreak_reports_outbreaks,NA
+epi_unit_type,text,outbreak_reports_outbreaks,NA
+location_approx,boolean,outbreak_reports_outbreaks,NA
+animal_type,text,outbreak_reports_outbreaks,NA
+is_cluster,boolean,outbreak_reports_outbreaks,NA
+location,text,outbreak_reports_outbreaks,NA
+latitude,double precision,outbreak_reports_outbreaks,NA
+longitude,double precision,outbreak_reports_outbreaks,NA
+report_id,text,outbreak_reports_outbreaks,NA
+species_name,text,outbreak_reports_outbreaks,NA
+last_level_specie_name,text,outbreak_reports_outbreaks,NA
+unit,text,outbreak_reports_outbreaks,NA
+susceptible,double precision,outbreak_reports_outbreaks,NA
+cases,double precision,outbreak_reports_outbreaks,NA
+deaths,double precision,outbreak_reports_outbreaks,NA
+killed_and_disposed,double precision,outbreak_reports_outbreaks,NA
+slaughtered_for_commercial_use,double precision,outbreak_reports_outbreaks,NA
+animal_species_category_type,text,outbreak_reports_outbreaks,NA
+ttype,text,outbreak_reports_outbreaks,NA
+is_wild,boolean,outbreak_reports_outbreaks,NA
+affected_desc,text,outbreak_reports_outbreaks,NA
+control_measures,text,outbreak_reports_outbreaks,NA
+production_system,text,outbreak_reports_outbreaks,NA
+water,text,outbreak_reports_outbreaks,NA
+national_ob_reference,text,outbreak_reports_outbreaks,NA
+no_of_outbreaks,integer,outbreak_reports_outbreaks,NA
+cluster_quantity,integer,outbreak_reports_outbreaks,NA
+second_adm_division,text,outbreak_reports_outbreaks,NA
+third_adm_division,text,outbreak_reports_outbreaks,NA
+vaccinated,integer,outbreak_reports_outbreaks,NA
+wildlife_type,text,outbreak_reports_outbreaks,NA
+country_iso3c,text,worldbank_indicators,NA
+year,integer,worldbank_indicators,NA
+gdp_dollars,double precision,worldbank_indicators,NA
+human_population,double precision,worldbank_indicators,NA
