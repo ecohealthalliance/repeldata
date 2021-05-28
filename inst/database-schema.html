@@ -167,14 +167,23 @@ pre code {
 </div>
 
 
-<div id="database-contents-sources-and-schema" class="section level1">
-<h1>Database Contents, Sources, and Schema</h1>
-<p>The REPEL database contains data curated from multiple sources of animal disease occurrence and covariates of disease spread (e.g., trade, animal movement). The database is regularly updated as new data becomes available. Here, we provide an overview of the tables in the REPEL database. Descriptions of all table fields can be viewed with <code>repeldata::repel_fields_schema()</code> [WORK IN PROGRESS]</p>
-<div id="disease-tables" class="section level2">
-<h2>Disease Tables</h2>
+<div id="repel-data" class="section level1">
+<h1>REPEL Data</h1>
+<p>Noam Ross, Emma Mendelsohn, Rob Young</p>
+<hr />
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>This package serves as a client interface for accessing the REPEL project database from R. It is currently EHA-only, but may become a public package for database access.</p>
+<p>The REPEL database contains data curated from multiple sources of animal disease occurrence and covariates of disease spread (e.g., trade, animal movement). The database is regularly updated as new data becomes available. Here, we provide installation and usage instructions, followed by an overview of the tables in the database.</p>
+</div>
+<div id="database-structure" class="section level2">
+<h2>Database structure</h2>
+<p>Below is a high-level overview of all tables in the database. Descriptions of table fields can be viewed as a tibble with <code>repeldata::repel_fields_schema()</code> [WORK IN PROGRESS]</p>
+<div id="disease-tables" class="section level3">
+<h3>Disease Tables</h3>
 <p>These tables contain disease reports and supplementary country attribute and health infrastructure information extracted from the <a href="https://wahis.oie.int/#/report-management">World Animal Health Information Database</a> (WAHIS). Managed by the World Organization for Animal Health (OIE), WAHIS contains annual disease summary reports and individual disease outbreak reports from 174 countries and territories. We download these reports from the OIE API and standardize them into structured tables.</p>
-<div id="annual-report-tables" class="section level3">
-<h3>Annual report tables</h3>
+<div id="annual-report-tables" class="section level4">
+<h4>Annual report tables</h4>
 <p>Annual report tables include summaries by 6-month semesters (Jan - Jun and Jul - Dec) and by year.</p>
 <ul>
 <li><p><strong>annual_reports_status</strong><br />
@@ -211,8 +220,8 @@ Vaccine production capability by disease</p></li>
 Vaccine doses produced and exported</p></li>
 </ul>
 </div>
-<div id="outbreak-report-tables" class="section level3">
-<h3>Outbreak report tables</h3>
+<div id="outbreak-report-tables" class="section level4">
+<h4>Outbreak report tables</h4>
 <p>Outbreak tables are are individual disease reports from data released on a weekly basis. Outbreaks are tracked as threads with new events continuously reported until the outbreak is resolved or the disease becomes endemic.</p>
 <ul>
 <li><p><strong>outbreak_reports_ingest_status_log</strong><br />
@@ -226,8 +235,8 @@ Disease names that were not successfully matched against the ANDO database. Thes
 </ul>
 </div>
 </div>
-<div id="connect-tables" class="section level2">
-<h2>Connect Tables</h2>
+<div id="connect-tables" class="section level3">
+<h3>Connect Tables</h3>
 <p>These tables contain non-disease endpoints from multiple sources representing covariates of disease spread. Connect data are values shared between two countries (e.g., trade value).</p>
 <ul>
 <li><p><strong>connect_static_vars</strong><br />
@@ -251,6 +260,7 @@ Descriptions of item codes from livestock heads fields in connect_yearly_vars</p
 <li><p><strong>connect_ots_lookup</strong><br />
 Descriptions of product codes from trade dollars fields in connect_yearly_vars</p></li>
 </ul>
+</div>
 </div>
 </div>
 
