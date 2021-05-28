@@ -3,13 +3,11 @@ title: "Intro to repeldata"
 output: 
   html_document:
     keep_md: true
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+date: "28 May, 2021"
 author: Emma Mendelsohn
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
-```
+
 
 Welcome Veronica and David!
 
@@ -27,7 +25,8 @@ I suggest starting your EDA with the outbreak tables. These are from the animal 
 
 There is a lot to explore with this data, including duration, magnitude of certain endpoints, spatial coverage. To get started, you may want to focus on a specific disease and country. Below is some example code to get started.
 
-```{r}
+
+```r
 library(repeldata)
 library(dbplyr)
 library(dplyr)
@@ -66,8 +65,11 @@ event_outbreaks %>%
     ggplot(aes(x = year, y = total_cases)) + 
     geom_col() +
     theme_bw()
+```
 
+![](ecohealthnet-introduction_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 
+```r
 # a deeper look at outbreak curves since 2019
 event_outbreaks %>%
     filter(year >= 2019) %>% 
@@ -81,6 +83,8 @@ event_outbreaks %>%
     geom_line() +
     theme_bw()
 ```
+
+![](ecohealthnet-introduction_files/figure-html/unnamed-chunk-1-2.png)<!-- -->
 
 
 
