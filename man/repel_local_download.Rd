@@ -8,7 +8,8 @@ repel_local_download(
   destdir = tempfile(),
   cleanup = TRUE,
   verbose = interactive(),
-  load_aws_credentials = TRUE
+  load_aws_credentials = FALSE,
+  raw_data_only = FALSE
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ repel_local_download(
 \item{verbose}{Whether to display messages and download progress}
 
 \item{load_aws_credentials}{Whether to use credentials from [aws.signature::use_credentials()].  If FALSE, AWS credentials must be provided as environment variables.}
+
+\item{raw_data_only}{Whether to download only raw data. TRUE includes REPEL model predictions.}
 }
 \description{
 This command downloads the REPEL shipments database and populates a local

@@ -10,49 +10,6 @@ This package serves as a client interface for accessing the REPEL project databa
 
 The REPEL database contains data curated from multiple sources of animal disease occurrence and covariates of disease spread (e.g., trade, animal movement). The database is regularly updated as new data becomes available. Here, we provide installation and usage instructions, followed by an overview of the tables in the database.
 
-## Install and download
-
-Install package from GitHub. Download the data locally, and then launch the database connection from RStudio
-
-```
-remotes::install_github("ecohealthalliance/repeldata")
-``` 
-```
-library(repeldata)
-library(dplyr)
-
-repel_local_download() # takes several minutes
-repel_local_pane()
-```
-
-The __Connections__ pane (on the top-right corner of the RStudio default layout) will show all tables available in the database. Clicking on the arrows will show the field names and types, and clicking on the table icon with bring the tables into Viewer. 
-
-To interact with the tables, you can establish a database connection and access tibbles without actually reading the data into memory. You can perform data manipulation on the tables and then collect the results using the __dplyr__ collect() function. This is especially handy for large tables for which you only need a subset of the data. 
-
-```
-conn <- repel_local_conn()
-animal_diseases <- tbl(conn, "annual_reports_animal_diseases") %>% 
-    filter(disease == "african swine fever") %>% 
-    collect()
-```
-
-When you are done with your session, disconnect from the database.
-
-```
-repel_local_disconnect()
-```
-
-## Remote access
-
-Remote access to the database on our EHA server is available for development purposes. This will require a username and password provided by the REPEL team (Noam, Emma, Rob). Enter the following in your `.Renviron`
-
-```
-REPELDATA_USER=yourusername  
-REPELDATA_PASSWORD=yourpassword
-```
-
-All `repel_local_x()` functions can be run as `repel_remote_x()` when using the remote database.
-
 ## Database structure 
 
 Below is a high-level overview of all tables in the database. Descriptions of table fields can be viewed as a tibble with `repeldata::repel_fields_schema()` [WORK IN PROGRESS]
