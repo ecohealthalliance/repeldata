@@ -6,8 +6,6 @@
 #' @return NULL
 #' @export
 #'
-#' @examples
-#' if (!is.null(getOption("connectionObserver"))) wahis_pane()
 #' 
 
 repel_pane <- function(conn = repel_remote_conn(),

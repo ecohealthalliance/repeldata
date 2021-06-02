@@ -36,5 +36,4 @@ Suggests:
     spelling, 
     testthat
 Remotes:
-  ropensci/arkdb,
-  ecohealthalliance/wahis
+  ropensci/arkdb
