@@ -12,11 +12,15 @@ The REPEL database contains data curated from multiple sources of animal disease
 
 ## Install and download
 
-Install package from GitHub. Download the data locally, and then launch the database connection from RStudio
+To install the package, you must have an active GitHub PAT associated with your EHA account, saved in your `.Renviron` (which can be viewed via `usethis::edit_r_environ()`). If you do not have a PAT, or if it hasn't been used in over a year, follow the instructions here: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token. Save your new token in your `.Renviron` as `GITHUB_PAT=paste_your_token_here`. Restart your R session.
+
+Install package from GitHub. 
 
 ```
 remotes::install_github("ecohealthalliance/repeldata")
 ``` 
+Download the data locally, and then launch the database connection from RStudio.
+
 ```
 library(repeldata)
 library(dplyr)
