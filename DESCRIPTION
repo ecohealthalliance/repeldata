@@ -16,7 +16,7 @@ Encoding: UTF-8
 Language: en-US
 Imports:
     DBI,
-    duckdb (>= 0.2.5),
+    duckdb (== 0.2.5),
     RPostgres,
     rappdirs,
     readr,

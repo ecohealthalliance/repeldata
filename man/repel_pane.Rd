@@ -14,7 +14,3 @@ repel_pane(
 This function launches the RStudio "Connection" pane to interactively
 explore the database.
 }
-\examples{
-if (!is.null(getOption("connectionObserver"))) wahis_pane()
-
-}
