@@ -12,7 +12,7 @@ The REPEL database contains data curated from multiple sources of animal disease
 
 ## Install and download
 
-To install the package, you must have an active GitHub PAT associated with your EHA account, saved in your `.Renviron` (which can be viewed via `usethis::edit_r_environ()`). If you do not have a PAT, or if it hasn't been used in over a year, follow the instructions here: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token. Save your new token in your `.Renviron` as `GITHUB_PAT=paste_your_token_here`. Restart your R session.
+To install the package, you must have an active GitHub PAT saved in your `.Renviron` (which can be viewed via `usethis::edit_r_environ()`). If you do not have a PAT, or if it hasn't been used in over a year, follow the instructions here: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token. Save your new token in your `.Renviron` as `GITHUB_PAT=yourtoken`. Restart your R session.
 
 Install package from GitHub. 
 
@@ -35,7 +35,7 @@ To interact with the tables, you can establish a database connection and access 
 
 ```
 conn <- repel_local_conn()
-animal_diseases <- tbl(conn, "annual_reports_animal_diseases") %>% 
+outbreak_reports_asf <- tbl(conn, "outbreak_reports_events") %>% 
     filter(disease == "african swine fever") %>% 
     collect()
 ```
@@ -61,13 +61,44 @@ All `repel_local_x()` functions can be run as `repel_remote_x()` when using the 
 
 Below is a high-level overview of all tables in the database. Descriptions of table fields can be viewed as a tibble with `repeldata::repel_fields_schema()` [WORK IN PROGRESS]
 
-### Disease Tables
+### WAHIS Tables
 
-These tables contain disease reports and supplementary country attribute and health infrastructure information extracted from the [World Animal Health Information Database](https://wahis.oie.int/#/report-management) (WAHIS). Managed by the World Organization for Animal Health (OIE), WAHIS contains annual disease summary reports and individual disease outbreak reports from 174 countries and territories. We download these reports from the OIE API and standardize them into structured tables.
+These tables contain disease reports and supplementary country attribute and health infrastructure information extracted from the [World Animal Health Information Database](https://wahis.oie.int/#/report-management) (WAHIS). Managed by the World Organization for Animal Health (OIE), WAHIS contains individual disease outbreak reports from 174 countries and territories; bi-annual disease summary reports; and annual country capacity reports. We download these reports from the OIE API and standardize them into structured tables.
+
+#### Outbreak report tables
+
+Outbreak tables are individual disease reports from data released on a weekly basis. Outbreaks are tracked as threads with new events continuously reported until the outbreak is resolved or the disease becomes endemic. 
+  
+* __outbreak_reports_ingest_status_log__  
+List of reports in database. `report_info_id` can be appended to "https://wahis.oie.int/pi/getReport/" to see the report API.
+
+* __outbreak_reports_events__  
+High-level event information including country, disease and disease status. Disease names are standardized to the [Animal Disease Ontology](http://agroportal.lirmm.fr/ontologies/ANDO]) from the French National research institute for agriculture, food and the environment. Each row is an outbreak report. `report_id` is the unique report ID.
+
+* __outbreak_reports_outbreaks__  
+Detailed location and impact data for outbreak events. This table can be joined with `outbreak_reports_events` by `report_id`. `outbreak_location_id` is a unique ID for each location (e.g, farm or village) within a outbreak.
+
+* __outbreak_reports_diseases_unmatched__  
+Disease names that were not successfully matched against the ANDO database. These require manual review. Note that these diseases are not removed from the database.
+
+#### Six month report tables
+
+* __six_month_reports_ingest_status_log__  
+List of reports in database. `report_info_id` can be appended to "https://wahis.oie.int/pi/getReport/" to see the report API.
+
+* __six_month_reports_summary__  
+High-level event information including country, disease and disease status. Disease names are standardized to the [Animal Disease Ontology](http://agroportal.lirmm.fr/ontologies/ANDO]) from the French National research institute for agriculture, food and the environment. Each row is an outbreak report. `report_id` is the unique report ID.
+
+* __six_month_reports_detail__  
+Detailed location and impact data for outbreak events. This table can be joined with `outbreak_reports_events` by `report_id`. `outbreak_location_id` is a unique ID for each location (e.g, farm or village) within a outbreak.
+
+* __six_month_reports_diseases_unmatched__  
+Disease names that were not successfully matched against the ANDO database. These require manual review. Note that these diseases are not removed from the database.
 
 #### Annual report tables
 
-Annual report tables include summaries by 6-month semesters (Jan - Jun and Jul - Dec) and by year. 
+Annual report tables include information about country capacity and taxa population. 
+ _Note that these tables will be updated when the API becomes available for annual reports._
 
 * __annual_reports_status__  
 Indicates whether reports are available through WAHIS for all countries, years, and semesters
@@ -76,25 +107,7 @@ Indicates whether reports are available through WAHIS for all countries, years, 
 Indicates whether reports available through WAHIS were successfully downloaded and included in the REPEL database. Error messages are provided for reports that were not successfully included.  
 
 * __annual_reports_submission_info__  
-Point of contact information from country submitters 
-
-* __annual_reports_animal_diseases__  
-Diseases present, suspected, or absent in animals. Includes counts of new and total outbreaks if available. Disease names are standardized to the [Animal Disease Ontology](http://agroportal.lirmm.fr/ontologies/ANDO]) from the French National research institute for agriculture, food and the environment.
-
-* __annual_reports_animal_diseases_detail__  
-Data from annual_reports_animal_diseases broken down at finer temporal and spatial scales
-
-* __annual_reports_disease_humans__  
-Diseases present or absent in humans. Includes counts of human cases and deaths if available. Disease names are standardized to the [Animal Disease Ontology](http://agroportal.lirmm.fr/ontologies/ANDO]) from the French National research institute for agriculture, food and the environment.
-
-* __annual_reports_diseases_unmatched__  
-Disease names that were not successfully matched against the ANDO database. These require manual review. Note that the unstandardized disease reports are included in the database.
-
-* __annual_reports_animal_hosts__  
-Animal diseases by taxa. Includes counts of cases, deaths, vaccinations, etc.
-
-* __annual_reports_animal_hosts__  
-Data from annual_reports_animal_diseases broken down at finer temporal and spatial scales
+Point of contact information for country submitter
 
 * __annual_reports_animal_population__  
 Reported populations of animals by country
@@ -116,22 +129,6 @@ Vaccine production capability by disease
 
 * __annual_reports_vaccine_production__  
 Vaccine doses produced and exported
-
-#### Outbreak report tables
-
-Outbreak tables are are individual disease reports from data released on a weekly basis. Outbreaks are tracked as threads with new events continuously reported until the outbreak is resolved or the disease becomes endemic. 
-  
-* __outbreak_reports_ingest_status_log__  
-List of reports in database. `report_info_id` can be appended to "https://wahis.oie.int/pi/getReport/" to see the report API.
-
-* __outbreak_reports_events__  
-High-level event information including country, disease and disease status. Disease names are standardized to the [Animal Disease Ontology](http://agroportal.lirmm.fr/ontologies/ANDO]) from the French National research institute for agriculture, food and the environment. Each row is an outbreak report. `report_id` is the unique report ID.
-
-* __outbreak_reports_outbreaks__  
-Detailed location and impact data for outbreak events. This table can be joined with `outbreak_reports_events` by `report_id`. `outbreak_location_id` is a unique ID for each location (e.g, farm or village) within a outbreak.
-
-* __outbreak_reports_diseases_unmatched__  
-Disease names that were not successfully matched against the ANDO database. These require manual review. Note that these diseases are not removed from the database.
 
 ### Connect Tables
 
