@@ -70,7 +70,7 @@ These tables contain disease reports and supplementary country attribute and hea
 Outbreak tables are individual disease reports from data released on a weekly basis. Outbreaks are tracked as threads with new events continuously reported until the outbreak is resolved or the disease becomes endemic. 
   
 * __outbreak_reports_ingest_status_log__  
-List of reports in database. `report_info_id` can be appended to "https://wahis.oie.int/pi/getReport/" to see the report API.
+List of reports in database. `report_info_id` can be appended to "https://wahis.oie.int/pi/getReport/" to see the report API, and to "https://wahis.oie.int/#/report-info?reportId=" to see the formatted outbreak report.
 
 * __outbreak_reports_events__  
 High-level event information including country, disease and disease status. Disease names are standardized to the [Animal Disease Ontology](http://agroportal.lirmm.fr/ontologies/ANDO]) from the French National research institute for agriculture, food and the environment. Each row is an outbreak report. `report_id` is the unique report ID.
@@ -84,7 +84,7 @@ Disease names that were not successfully matched against the ANDO database. Thes
 #### Six month report tables
 
 * __six_month_reports_ingest_status_log__  
-List of reports in database. `report_info_id` can be appended to "https://wahis.oie.int/pi/getReport/" to see the report API.
+List of `report_id` in database. Report API is available via `paste0("https://wahis.oie.int/smr/pi/report/", report_id, "?format=preview")`. Formatted reports can be viewed as `https://wahis.oie.int/#/report-smr/view?reportId=20038&period=SEM01&areaId=2&isAquatic=false`.
 
 * __six_month_reports_summary__  
 High-level six-month disease data. It provides disease status (present/absent/unreported) and case counts by country, disease, taxa. It also includes control measures. Disease names are standardized to the [Animal Disease Ontology](http://agroportal.lirmm.fr/ontologies/ANDO]) from the French National research institute for agriculture, food and the environment. 
