@@ -24,6 +24,7 @@ repel_local_check_status <- function() {
 #' `repeldata` under [rappdirs::user_data_dir()], or the environment variable `WAHIS_DB_DIR`.
 #'
 #' @return A database connection
+#' @import duckdb
 #' @importFrom arkdb local_db
 #' @export
 repel_local_conn <- function(dbdir = repel_local_path(), readonly = TRUE,
