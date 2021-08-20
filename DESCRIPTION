@@ -16,7 +16,6 @@ Encoding: UTF-8
 Language: en-US
 Imports:
     DBI,
-    duckdb (== 0.2.5),
     RPostgres,
     rappdirs,
     readr,
@@ -36,4 +35,5 @@ Suggests:
     spelling, 
     testthat
 Remotes:
-  ropensci/arkdb
+    ropensci/arkdb,
+    cran/duckdb@0.2.5
