@@ -25,7 +25,7 @@ Download the data locally, and then launch the database connection from RStudio.
 library(repeldata)
 library(dplyr)
 
-repel_local_download() # takes several minutes
+repel_local_download(raw_data_only = TRUE) # set raw_data_only to TRUE if you wish to avoid download of model predictions - will only download scraped data
 repel_local_pane()
 ```
 
