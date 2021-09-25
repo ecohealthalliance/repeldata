@@ -76,7 +76,7 @@ List of reports in database. `report_info_id` can be appended to "https://wahis.
 High-level event information including country, disease and disease status. Disease names are standardized to the [Animal Disease Ontology](http://agroportal.lirmm.fr/ontologies/ANDO]) from the French National research institute for agriculture, food and the environment. Each row is an outbreak report. `report_id` is the unique report ID.
 
 * __outbreak_reports_outbreaks__  
-Detailed location and impact data for outbreak events. This table can be joined with `outbreak_reports_events` by `report_id`. `outbreak_location_id` is a unique ID for each location (e.g, farm or village) within a outbreak.
+Detailed location and impact data for outbreak events. This table can be joined with `outbreak_reports_events` by `report_id`. `outbreak_location_id` is a unique ID for each location (e.g, farm or village) within a outbreak. The field `id` is the unique combination of the `report_id`, `outbreak_location_id`, and `taxa`.
 
 * __outbreak_reports_diseases_unmatched__  
 Disease names that were not successfully matched against the ANDO database. These require manual review. Note that these diseases are not removed from the database.
@@ -130,28 +130,40 @@ Vaccine production capability by disease
 * __annual_reports_vaccine_production__  
 Vaccine doses produced and exported
 
-### Connect Tables
+### Non-WAHIS Tables
 
 These tables contain non-disease endpoints from multiple sources representing covariates of disease spread. Connect data are values shared between two countries (e.g., trade value). 
 
-* __connect_static_vars__  
-Connect values without a temporal component. Static data are non-directional, meaning that values from Country A -> Country B are the same as values from B -> A. This table contains the following data:  
+* __connect_static__ tables  
+Connect values without a temporal component. Static data are non-directional, meaning that values from Country A -> Country B are the same as values from B -> A.  
 
-  * Shared borders (True or False)
-  * Geodesic distance between country centroids in meters
-  * Number of migratory birds shared by countries based on country migratory avian species lists from [BirdLife International](http://datazone.birdlife.org/country)
-  * Number of migratory non-avian wildlife shared by countries based on country species lists from the [IUCN Red List API](https://apiv3.iucnredlist.org/) and the global migratory species list from the [Global Register of Migratory Species](http://groms.de/groms_neu/view/order_stat_patt_spanish.php?search_pattern=)
+  * `connect_static_shared_borders` - shared borders (True or False)
+  * `connect_static_country_distance` - Geodesic distance between country centroids in meters
+  * `connect_static_bli_bird_migration` - Number of migratory birds shared by countries based on country migratory avian species lists from [BirdLife International](http://datazone.birdlife.org/country)
+  * `connect_static_iucn_wildlife_migration` - Number of migratory non-avian wildlife shared by countries based on country species lists from the [IUCN Red List API](https://apiv3.iucnredlist.org/) and the global migratory species list from the [Global Register of Migratory Species](http://groms.de/groms_neu/view/order_stat_patt_spanish.php?search_pattern=)
 <br/><br/>
-* __connect_yearly_vars__  
+* __connect_yearly__ tables  
 Connect values that vary by year. Yearly data are directional, meaning that values from Country A -> Country B differ from values from B -> A.  
 
-  * Number of human migrants from the [United Nations Population Division Global Migration Database](https://www.un.org/en/development/desa/population/migration/data/empirical2/index.asp)
-  * Number of tourists from the [United Nations World Tourism Organization](https://www.e-unwto.org/)
-  * Count of traded livestock heads from the [Food and Agriculture Organization](http://www.fao.org/faostat/en/#data/)
-  * Trade dollars from the Open Trade Statistics API, accessed using the [tradestatistics](https://cran.r-project.org/web/packages/tradestatistics/tradestatistics.pdf) R package
+  * `connect_yearly_un_human_migration` - Number of human migrants from the [United Nations Population Division Global Migration Database](https://www.un.org/en/development/desa/population/migration/data/empirical2/index.asp)
+  * `connect_yearly_wto_tourism` - Number of tourists from the [United Nations World Tourism Organization](https://www.e-unwto.org/)
+  * `connect_yearly_fao_livestock` - Count of traded livestock heads from the [Food and Agriculture Organization](http://www.fao.org/faostat/en/#data/). `connect_yearly_fao_livestock_summary` summarizes total livestock heads by trade partners. 
+  * `connect_yearly_ots_trade` - Agricultural trade dollars from the Open Trade Statistics API, accessed using the [tradestatistics](https://cran.r-project.org/web/packages/tradestatistics/tradestatistics.pdf) R package. Includes following reporting groups: "Foodstuffs","Animal and Vegetable Bi-Products", "Vegetable Products", "Animal Hides",  "Animal Products". `connect_yearly_ots_trade_summary` summarizes total agricultural trade dollars by trade partners. 
 <br/><br/>
-* __connect_fao_lookup__  
-Descriptions of item codes from livestock heads fields in connect_yearly_vars
+* __country_yearly__ tables  
+Country-specific values that vary by year.
 
-* __connect_ots_lookup__  
-Descriptions of product codes from trade dollars fields in connect_yearly_vars
+  * `country_yearly_wb_gdp` - Country GDP in dollars from WorldBank
+  * `country_yearly_wb_human_population` - Country human population from WorldBank
+  * `country_yearly_fao_taxa_population` - Population of key taxa from FAO
+  * `country_yearly_oie_vet_population` - Veterinarians in country from OIE annual reports
+
+### Model predictions
+
+* __network_lme_augment_predict__  
+Augmented outbreak data with network LME model predictions
+
+* __network_lme_augment_predict_by_origin__  
+Augmented outbreak data disaggregated by country origins from outbreaks
+
+
